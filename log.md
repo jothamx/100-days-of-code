@@ -1,0 +1,19 @@
+# 100 Days Of Code - Log
+
+### Day 0: April 21, 2020 
+##### 学习Java字符串知识，了解Scanner，System.out输入输出
+
+**Today's Progress**: 
+
+**Thoughts:** 
+
+**Link to work:** [JavaPractice](https://github.com/likui911/100-days-of-code/tree/master/JavaPractice)
+
+### Day 1: April 22, 2020 
+##### freeCodeCamp刷完基础的HTML及HTML5语法
+
+**Today's Progress**: 
+
+**Thoughts:** 
+
+**Link to work:** [JavaPractice](https://github.com/likui911/100-days-of-code/tree/master/freecodecamp)
