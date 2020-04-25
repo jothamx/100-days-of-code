@@ -16,7 +16,7 @@
 
 **Thoughts:** 
 
-**Link to work:** [JavaPractice](https://github.com/likui911/100-days-of-code/tree/master/freecodecamp)
+**Link to work:** [freecodecamp](https://github.com/likui911/100-days-of-code/tree/master/freecodecamp)
 
 ### Day 2: April 24, 2020 
 ##### freeCodeCamp刷完基础CSS教程
@@ -25,4 +25,11 @@
 
 **Thoughts:** 
 
-**Link to work:** [JavaPractice](https://github.com/likui911/100-days-of-code/tree/master/freecodecamp)
+**Link to work:** [freecodecamp](https://github.com/likui911/100-days-of-code/tree/master/freecodecamp)
+
+### Day 3: April 25, 2020 
+##### freeCodeCamp刷完响应web设计的语法，涉及页面布局，动画等
+
+**Thoughts:** 
+
+**Link to work:** [freecodecamp](https://github.com/likui911/100-days-of-code/tree/master/freecodecamp)
