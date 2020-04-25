@@ -17,3 +17,12 @@
 **Thoughts:** 
 
 **Link to work:** [JavaPractice](https://github.com/likui911/100-days-of-code/tree/master/freecodecamp)
+
+### Day 2: April 24, 2020 
+##### freeCodeCamp刷完基础CSS教程
+
+**Today's Progress**: 
+
+**Thoughts:** 
+
+**Link to work:** [JavaPractice](https://github.com/likui911/100-days-of-code/tree/master/freecodecamp)
