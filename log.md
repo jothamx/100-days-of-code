@@ -40,3 +40,10 @@
 **Thoughts:** 
 
 **Link to work:** [freecodecamp](https://github.com/likui911/100-days-of-code/tree/master/freecodecamp)
+
+### Day 5: April 28, 2020 
+##### completed "Build a Tribute Page"
+
+**Thoughts:** 界面元素基本上能实现，界面布局是难点
+
+**Link to work:** [freecodecamp](https://github.com/likui911/100-days-of-code/tree/master/freecodecamp)
