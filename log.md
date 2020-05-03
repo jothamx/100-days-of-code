@@ -47,3 +47,10 @@
 **Thoughts:** 界面元素基本上能实现，界面布局是难点
 
 **Link to work:** [freecodecamp](https://github.com/likui911/100-days-of-code/tree/master/freecodecamp)
+
+### Day 6: May 3, 2020 
+##### completed "Marking_up_a_letter"
+
+**Thoughts:** 实现了一封邮件的布局，练习了常规的tag的用法
+
+**Link to work:** [MDN](https://github.com/likui911/100-days-of-code/tree/master/MDN)
