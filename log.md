@@ -50,7 +50,10 @@
 
 ### Day 6: May 3, 2020 
 ##### completed "Marking_up_a_letter"
+##### completed "Structuring_a_page_of_content"
 
-**Thoughts:** 实现了一封邮件的布局，练习了常规的tag的用法
+**Thoughts:** 
+1. 实现了一封邮件的布局，练习了常规的tag的用法
+2. 为“观鸟网”的主页添加结构化元素，使其可以进行布局设计
 
 **Link to work:** [MDN](https://github.com/likui911/100-days-of-code/tree/master/MDN)
