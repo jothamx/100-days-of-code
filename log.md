@@ -61,9 +61,11 @@
 
 ### Day 6: May 4, 2020 
 ##### completed "Mozilla_splash_page"
+##### completed "Structuring_planet_data"
 
 **Thoughts:** 
 1. img的srcset和sizes实现实现响应式图片
 2. picture的srcset和media实现响应式图片
+3. 掌握了html表格的基本用法
 
 **Link to work:** [MDN](https://github.com/likui911/100-days-of-code/tree/master/MDN)
