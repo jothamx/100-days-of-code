@@ -57,3 +57,13 @@
 2. 为“观鸟网”的主页添加结构化元素，使其可以进行布局设计
 
 **Link to work:** [MDN](https://github.com/likui911/100-days-of-code/tree/master/MDN)
+
+
+### Day 6: May 4, 2020 
+##### completed "Mozilla_splash_page"
+
+**Thoughts:** 
+1. img的srcset和sizes实现实现响应式图片
+2. picture的srcset和media实现响应式图片
+
+**Link to work:** [MDN](https://github.com/likui911/100-days-of-code/tree/master/MDN)
