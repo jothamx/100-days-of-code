@@ -69,3 +69,11 @@
 3. 掌握了html表格的基本用法
 
 **Link to work:** [MDN](https://github.com/likui911/100-days-of-code/tree/master/MDN)
+
+### Day 6: May 5, 2020 
+##### completed "HTML_form"
+
+**Thoughts:** 
+1. 使用html内置表单控件实现一个支付验证表单
+
+**Link to work:** [MDN](https://github.com/likui911/100-days-of-code/tree/master/MDN)

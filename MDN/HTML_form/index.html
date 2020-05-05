@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="utf-8">
+  <link href="payment-form.css" rel="stylesheet">
+  <title>Payment form example</title>
+</head>
+
+<body>
+  <form action="/validatePayment" method="POST">
+    <h1>Payment form</h1>
+    <p>Required fields are followed by <strong><abbr title="required">*</abbr></strong>.</p>
+    <!--用户信息-->
+    <section>
+      <h3>Contact information</h3>
+      <fieldset>
+        <legend>Title</legend>
+        <ul>
+          <li><label for="title_1"><input type="radio" value="A" name="title" id="title_1">Ace</label></li>
+          <li><label for="title_2"><input type="radio" value="K" name="title" id="title_2">King</label></li>
+          <li><label for="title_3"><input type="radio" value="Queen" name="title" id="title_3">Queen</label></li>
+        </ul>
+      </fieldset>
+      <p>
+        <label for="name"><span>Name:</span><strong><abbr title="required">*</abbr></strong></label>
+        <input type="text" id="name" name="username">
+      </p>
+      <p>
+        <label for="email"><span>Email:</span><strong><abbr title="required">*</abbr></strong></label>
+        <input type="email" id="email" name="usermail">
+      </p>
+      <p>
+        <label for="password"><span>Password:</span><strong><abbr title="required">*</abbr></strong></label>
+        <input type="password" id="password" name="password">
+      </p>
+    </section>
+    <!--支付信息-->
+    <section>
+      <h3>Payment information</h3>
+      <p>
+        <label for="cardtype"><span>Card Type:</span></label>
+        <select id="cardtype">
+          <option>Visa</option>
+          <option>Mastercard</option>
+          <option>American Express</option>
+        </select>
+      </p>
+      <p>
+        <label for="cardnum"><span>Card number:</span><strong><abbr title="required">*</abbr></strong></label>
+        <input type="number" id="cardnum" name="cardnum">
+      </p>
+      <p>
+        <label for="expiration"><span>Expiration date:</span><strong><abbr title="required">*</abbr></strong></label>
+        <input type="date" id="expiration" name="expiration">
+      </p>
+    </section>
+    <!--验证按钮部分-->
+    <section>
+      <button type="submit">validate the payment</button>
+    </section>
+  </form>
+</body>
+
+</html>
