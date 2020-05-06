@@ -59,7 +59,7 @@
 **Link to work:** [MDN](https://github.com/likui911/100-days-of-code/tree/master/MDN)
 
 
-### Day 6: May 4, 2020 
+### Day 7: May 4, 2020 
 ##### completed "Mozilla_splash_page"
 ##### completed "Structuring_planet_data"
 
@@ -70,10 +70,18 @@
 
 **Link to work:** [MDN](https://github.com/likui911/100-days-of-code/tree/master/MDN)
 
-### Day 6: May 5, 2020 
+### Day 8: May 5, 2020 
 ##### completed "HTML_form"
 
 **Thoughts:** 
 1. 使用html内置表单控件实现一个支付验证表单
 
 **Link to work:** [MDN](https://github.com/likui911/100-days-of-code/tree/master/MDN)
+
+### Day 9: May 6, 2020 
+##### completed "fetch_pantone_colors"
+
+**Thoughts:** 
+1. 利用python BeautifulSoup获取潘通色板
+
+**Link to work:** [MDN](https://github.com/likui911/100-days-of-code/tree/master/PythonPractice)
