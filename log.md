@@ -85,3 +85,11 @@
 1. 利用python BeautifulSoup获取潘通色板
 
 **Link to work:** [MDN](https://github.com/likui911/100-days-of-code/tree/master/PythonPractice)
+
+### Day 10: May 7, 2020 
+##### try "Survery Form"
+
+**Thoughts:** 
+1. 掌握了基本的控件以及CSS的用法，布局还是搞不定
+
+**Link to work:** [MDN](https://github.com/likui911/100-days-of-code/tree/master/freecodecamp)
