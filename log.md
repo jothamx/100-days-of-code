@@ -93,3 +93,11 @@
 1. 掌握了基本的控件以及CSS的用法，布局还是搞不定
 
 **Link to work:** [MDN](https://github.com/likui911/100-days-of-code/tree/master/freecodecamp)
+
+### Day 11: May 11, 2020 
+##### completed "Survery Form"
+
+**Thoughts:** 
+1. 将Survery Form的布局重新调整了，基本上熟悉了CSS布局
+
+**Link to work:** [MDN](https://github.com/likui911/100-days-of-code/tree/master/freecodecamp)
