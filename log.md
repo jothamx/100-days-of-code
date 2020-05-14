@@ -109,3 +109,11 @@
 1. Product Landing Page进行界面布局，header使用fixed固定
 
 **Link to work:** [MDN](https://github.com/likui911/100-days-of-code/tree/master/freecodecamp)
+
+### Day 13: May 15, 2020 
+##### try "ProductLandingPage"
+
+**Thoughts:** 
+1. 增加界面元素，调整布局
+
+**Link to work:** [MDN](https://github.com/likui911/100-days-of-code/tree/master/freecodecamp)
