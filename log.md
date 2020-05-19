@@ -117,3 +117,11 @@
 1. 增加界面元素，调整布局
 
 **Link to work:** [MDN](https://github.com/likui911/100-days-of-code/tree/master/freecodecamp)
+
+### Day 14: May 19, 2020 
+##### try "ProductLandingPage"
+
+**Thoughts:** 
+1. 重新调整布局
+
+**Link to work:** [MDN](https://github.com/likui911/100-days-of-code/tree/master/freecodecamp)
