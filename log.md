@@ -128,8 +128,10 @@
 
 ### Day 15: May 23, 2020 
 ##### completed "ProductLandingPage"
+##### completed "TechnicalDocumentationPage"
 
 **Thoughts:** 
-完成界面布局，使用@media动态调整布局
+1. ProductLandingPage,完成界面布局，使用@media动态调整布局
+2. TechnicalDocumentationPage
 
 **Link to work:** [MDN](https://github.com/likui911/100-days-of-code/tree/master/freecodecamp)
