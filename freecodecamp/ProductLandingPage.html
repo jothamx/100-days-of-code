@@ -17,6 +17,13 @@
             align-items: center;
         }
 
+        @media (max-width: 650px) {
+            #header {
+                flex-direction: column;
+                flex-wrap: wrap;
+            }
+        }
+
         #header-img {
             width: 60vw;
         }
@@ -35,10 +42,26 @@
             justify-content: space-around;
         }
 
+        @media (max-width: 650px) {
+            #nav-bar ul {
+                margin-top: 10px;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                padding: 0 30px;
+            }
+
+            #nav-bar li {
+                margin-bottom: 10px;
+            }
+        }
+
         #nav-bar ul a {
             color: #000;
             text-decoration: none;
-            font-weight: bold;
+            font-weight: 500;
         }
 
         #main {
@@ -47,7 +70,13 @@
             display: block;
         }
 
-        #main h2 {
+        @media (max-width: 650px) {
+            #main {
+                margin-top: 150px;
+            }
+        }
+
+        h2 {
             width: 100%;
             text-align: center;
         }
@@ -71,6 +100,7 @@
             border: none;
             background-color: darkorange;
             align-self: center;
+            font-size: 1em;
         }
 
         #features {
@@ -80,38 +110,47 @@
 
         #howItWork {
             text-align: center;
+            display: flex;
+            justify-content: center;
+        }
+
+        #how-it-works>iframe {
+            max-width: 560px;
+            width: 100%;
         }
 
         #pricing {
+            margin-top: 30px;
+            margin-bottom: 20px;
             display: flex;
             flex-direction: row;
-            height: 300px;
             justify-content: space-evenly;
         }
 
-        #pricing_1 {
+        .pricing {
             width: 30%;
-            height: 300px;
-            background-color: brown;
+            margin: 10px auto;
+            padding-bottom: 10px;
+            max-width: 300px;
+            text-align: center;
+            border: #000;
+            border-style: solid;
+            border-width: 1px;
         }
 
-        #pricing_2 {
-            width: 30%;
-            height: 300px;
-            background-color: blanchedalmond;
-        }
+        @media (max-width: 800px) {
+            #pricing {
+                flex-direction: column;
+            }
 
-        #pricing_3 {
-            width: 30%;
-            height: 300px;
-            background-color: gold;
+            .pricing {
+                width: 100%;
+            }
         }
 
         #container {
-            margin-top: 50px;
             display: flex;
             flex-direction: column;
-            height: 1000px;
         }
 
         footer {
@@ -147,20 +186,44 @@
             flex-direction: row;
             width: 100%;
             margin-bottom: 30px;
+            box-sizing: border-box;
         }
 
         .icon {
-            min-width: 100px;
-            width: 25%;
+            min-width: 50px;
+            width: 15%;
             height: 100px;
-            background-color:chocolate;
         }
 
         .desc {
             margin-left: 20px;
-            width: 75%;
+            width: 85%;
             height: 100px;
-            background-color: #000;
+        }
+
+        @media (max-width: 800px) {
+            .icon {
+                display: none;
+            }
+        }
+
+        .desc>h2 {
+            text-align: left;
+        }
+
+        .level {
+            background-color: #ddd;
+            width: 100%;
+            font-weight: 700;
+            padding: 15px 0;
+        }
+
+        .btn {
+            width: 100px;
+            height: 40px;
+            border: none;
+            font-size: 1em;
+            background-color: darkorange;
         }
     </style>
 </head>
@@ -197,16 +260,35 @@
         <div id="container">
             <section id="features">
                 <div class="grid">
-                    <div class="icon"></div>
-                    <div class="desc"></div>
+                    <div class="icon">
+                        <img src="images/premium.PNG">
+                    </div>
+                    <div class="desc">
+                        <h2>Premium Materials</h2>
+                        <p>Our trombones use the shiniest brass which is sourced locally. This will increase the
+                            longevity of your purchase.</p>
+
+                    </div>
                 </div>
                 <div class="grid">
-                    <div class="icon"></div>
-                    <div class="desc"></div>
+                    <div class="icon">
+                        <img src="images/shipping.PNG">
+                    </div>
+                    <div class="desc">
+                        <h2>Fast Shipping</h2>
+                        <p>We make sure you recieve your trombone as soon as we have finished making it. We also provide
+                            free returns if you are not satisfied.</p>
+                    </div>
                 </div>
                 <div class="grid">
-                    <div class="icon"></div>
-                    <div class="desc"></div>
+                    <div class="icon">
+                        <img src="images/quality.PNG">
+                    </div>
+                    <div class="desc">
+                        <h2>Quality Assurance</h2>
+                        <p>For every purchase you make, we will ensure there are no damages or faults and we will check
+                            and test the pitch of your instrument.</p>
+                    </div>
                 </div>
 
             </section>
@@ -216,40 +298,35 @@
                     allowfullscreen></iframe>
             </section>
             <section id="pricing">
-                <div id="pricing_1"></div>
-                <div id="pricing_2"></div>
-                <div id="pricing_3"></div>
+                <div class="pricing">
+                    <div class="level">TENOR TROMBONE</div>
+                    <h2>$600</h2>
+                    <p>Lorem ipsum.</p>
+                    <p>Lorem ipsum.</p>
+                    <p>Lorem ipsum dolor.</p>
+                    <p>Lorem ipsum.</p>
+                    <button class="btn">Select</button>
+                </div>
+                <div class="pricing">
+                    <div class="level">BASS TROMBONE</div>
+                    <h2>$900</h2>
+                    <p>Lorem ipsum.</p>
+                    <p>Lorem ipsum.</p>
+                    <p>Lorem ipsum dolor.</p>
+                    <p>Lorem ipsum.</p>
+                    <button class="btn">Select</button>
+                </div>
+                <div class="pricing">
+                    <div class="level">VALVE TROMBONE</div>
+                    <h2>$1200</h2>
+                    <p>Lorem ipsum.</p>
+                    <p>Lorem ipsum.</p>
+                    <p>Lorem ipsum dolor.</p>
+                    <p>Lorem ipsum.</p>
+                    <button class="btn">Select</button>
+                </div>
             </section>
         </div>
-        <!--
-        <div id="features">
-            <div class="grid">
-                <div class="icon">
-                    <img src="images/premium.PNG"></div>
-            </div>
-            <div class="desc">
-                <h3>Premium Materials</h3>
-                <p>Our trombones use the shiniest brass which is sourced locally. This will increase the longevity
-                    of your purchase.</p>
-
-            </div>
-        </div>
-        <div>
-            <h2>Fast Shipping</h2>
-        </div>
-        <div>
-            <h2>Quality Assurance</h2>
-        </div>
-    </div>
-    <div id="howItWork">
-        
-    </div>
-    <div id="pricing">
-        <div>Lever 1</div>
-        <div>Lever 2</div>
-        <div>Lever 3</div>
-    </div>
-       -->
         <footer>
             <ul>
                 <li>Features</li>
