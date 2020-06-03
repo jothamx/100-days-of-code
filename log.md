@@ -148,3 +148,8 @@
 ##### Learn "Flask"
 
 **Link to work:** [MDN](https://github.com/likui911/100-days-of-code/tree/master/FlaskWeb)
+
+### Day 18: June 3, 2020 
+##### Learn "flask_bootstrap"
+
+**Link to work:** [MDN](https://github.com/likui911/100-days-of-code/tree/master/FlaskWeb)
