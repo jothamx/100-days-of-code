@@ -153,3 +153,11 @@
 ##### Learn "flask_bootstrap"
 
 **Link to work:** [MDN](https://github.com/likui911/100-days-of-code/tree/master/FlaskWeb)
+
+### Day 19: June 7, 2020 
+##### Learn "flask_bootstrap"
+**Thoughts:** 
+1. 使用venv创建virtual environment
+2. flask_moment格式化当前时间
+
+**Link to work:** [MDN](https://github.com/likui911/100-days-of-code/tree/master/FlaskWeb)
