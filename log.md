@@ -161,3 +161,10 @@
 2. flask_moment格式化当前时间
 
 **Link to work:** [MDN](https://github.com/likui911/100-days-of-code/tree/master/FlaskWeb)
+
+### Day 20: June 15, 2020 
+##### Learn "flask_bootstrap"
+**Thoughts:** 
+1. 引入flask_wtf，生成form表单
+
+**Link to work:** [MDN](https://github.com/likui911/100-days-of-code/tree/master/FlaskWeb)
