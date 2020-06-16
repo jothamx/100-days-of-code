@@ -1,5 +1,4 @@
-from flask import Flask
-from flask import render_template
+from flask import Flask,render_template,redirect,session,url_for,flash
 from flask_bootstrap import Bootstrap
 from flask_moment import Moment
 from datetime import datetime
@@ -28,12 +27,15 @@ class NameForm(FlaskForm):
 
 @app.route("/form",methods=['GET','POST'])
 def form():
-    name=None
     form=NameForm()
     if form.validate_on_submit():
-        name=form.name.data
-        form.name.data=''
-    return render_template("form.html",form=form,name=name);
+        oldName=session.get('name')
+        if oldName is not None and oldName!=form.name.data:
+            flash("Looks like you hava changed your name!")
+        session['name']=form.name.data;
+        
+        return redirect(url_for('form'))
+    return render_template("form.html",form=form,name=session.get('name'));
 
 @app.errorhandler(404)
 def page_not_found(e):
