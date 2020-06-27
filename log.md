@@ -189,5 +189,7 @@
 ##### Learn vue.js
 **Thoughts:** 
 1. 完成vue-crash_todolist项目
+2. 不通过CLI手写Vue，熟悉Component和Event机制
 
 **Link to work:** [MDN](https://github.com/likui911/100-days-of-code/tree/master/vue_crash_todolist)
+**Link to work:** [MDN](https://github.com/likui911/100-days-of-code/tree/master/geektime-vue)

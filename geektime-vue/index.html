@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        .todo-list {
+            background-color: antiquewhite;
+            margin: 0 auto 0;
+            padding: 10px 5% 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <todo-list class="todo-list"></todo-list>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js">    </script>
+    <script>
+        Vue.component('add-item', {
+            template: `
+            <form v-on:submit.prevent="onSubmit">
+                <input type="text" v-model="text" placeholder="Add Todo..." required>
+                <button type="submit">增加</button>
+            </form>
+            `,
+            methods: {
+                onSubmit: function () {
+                    this.$emit("addItem", this.text)
+                    this.text = ''
+                }
+            },
+            data: function () {
+                return {
+                    text: ''
+                }
+            }
+        });
+        Vue.component('todo-item', {
+            template: `
+            <li>
+                <span>{{title}}</span>
+                <button v-on:click="$emit('deleteItem',title)">删除</button>
+            </li>
+            `,
+            props: {
+                title: String,
+            }
+        });
+
+        Vue.component('todo-list', {
+            template: `
+            <div>
+            <add-item v-on:addItem="addItem" ></add-item>
+            <ul >
+                <todo-item v-for="item in list" 
+                v-on:deleteItem="deleteItem" 
+                v-bind:title="item.title" 
+                v-bind:del="item.del" 
+                v-bind:key="item.title" />
+            </ul>
+            </div>
+            `,
+            data: function () {
+                return {
+                    list: [
+                        {
+                            title: '课程1',
+                            del: false
+                        },
+                        {
+                            title: '课程2',
+                            del: false
+                        },
+                        {
+                            title: '课程3',
+                            del: true
+                        },
+                        {
+                            title: '课程4',
+                            del: false
+                        },
+                        {
+                            title: '课程5',
+                            del: true
+                        }
+                    ]
+                }
+            },
+            methods: {
+                deleteItem: function (title) {
+                    this.list = this.list.filter((item) => item.title !== title);
+                },
+                addItem: function (text) {
+                    // 简化版本，不考虑重复问题
+                    this.list.push({ title: text, del: false })
+                }
+            }
+        })
+        var vm = new Vue({
+            el: '#app',
+            data: {
+
+            }
+        })
+    </script>
+
+
+</body>
+
+</html>
