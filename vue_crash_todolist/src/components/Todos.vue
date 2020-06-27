@@ -1,17 +1,21 @@
 <template>
   <div>
-      <div v-for="todo in todos" v-bind:key="todo">
-          <p><input type="checkbox" v-model="todo.completed"/>{{todo.title}}</p>    
+      <div v-for="todo in todos" v-bind:key="todo.id">
+          <TodoItem v-bind:todo="todo" v-on:del-todo="$emit('del-todo',todo.id)"/>   
       </div>
+      
   </div>
 </template>
 
 <script>
+import TodoItem from "./TodoItem"
+
 export default {
     name:"Todos",
     props:{
         todos:Array
-    }
+    },
+    components:{TodoItem}
 }
 </script>
 

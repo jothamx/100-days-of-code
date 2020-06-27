@@ -169,10 +169,25 @@
 
 **Link to work:** [MDN](https://github.com/likui911/100-days-of-code/tree/master/FlaskWeb)
 
-### Day 20: June 17, 2020 
+### Day 21: June 17, 2020 
 ##### Learn "flask_bootstrap"
 **Thoughts:** 
 1. 使用session记录用户数据，避免刷新时重新提交的问题
 2. 使用flash和get_flashed_messages显示提示信息
 
 **Link to work:** [MDN](https://github.com/likui911/100-days-of-code/tree/master/FlaskWeb)
+
+### Day 22: June 25, 2020 
+##### Learn vue.js
+**Thoughts:** 
+1. 使用vue CLI构建vue项目
+2. vscode 安装相关插件
+
+**Link to work:** [MDN](https://github.com/likui911/100-days-of-code/tree/master/vue_crash_todolist)
+
+### Day 23: June 27, 2020 
+##### Learn vue.js
+**Thoughts:** 
+1. 完成vue-crash_todolist项目
+
+**Link to work:** [MDN](https://github.com/likui911/100-days-of-code/tree/master/vue_crash_todolist)
