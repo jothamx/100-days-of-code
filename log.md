@@ -193,3 +193,11 @@
 
 **Link to work:** [MDN](https://github.com/likui911/100-days-of-code/tree/master/vue_crash_todolist)
 **Link to work:** [MDN](https://github.com/likui911/100-days-of-code/tree/master/geektime-vue)
+
+### Day 24: June 29, 2020 
+##### Learn vue.js
+**Thoughts:** 
+1. 使用Vue router构建导航栏
+2. 建立markdown标签页，准备实现第一个vue example
+
+**Link to work:** [MDN](https://github.com/likui911/100-days-of-code/tree/master/vue-examples)
