@@ -1,7 +1,11 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <img alt="Vue logo" src="../assets/logo.png" />
+    <div id="nav">
+      <router-link to="/">Home</router-link> |
+      <router-link to="/markdown">Markdown</router-link>
+      <router-link to="/todo">TodoList</router-link>
+    </div>
   </div>
 </template>
 
@@ -9,8 +13,7 @@
 // @ is an alias to /src
 
 export default {
-  name: 'Home',
-  components: {
-  }
-}
+  name: "Home",
+  components: {},
+};
 </script>

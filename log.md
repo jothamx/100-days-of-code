@@ -201,3 +201,12 @@
 2. 建立markdown标签页，准备实现第一个vue example
 
 **Link to work:** [MDN](https://github.com/likui911/100-days-of-code/tree/master/vue-examples)
+
+### Day 25: June 30, 2020 
+##### Learn vue.js
+**Thoughts:** 
+1. 构建todolist router
+2. 将TodoMVC的css样式应用过来，这里用到了beforeCreate修改body属性
+3. 使用localStora存储数据
+
+**Link to work:** [MDN](https://github.com/likui911/100-days-of-code/tree/master/vue-examples)
