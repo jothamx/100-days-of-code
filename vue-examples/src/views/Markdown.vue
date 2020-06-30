@@ -1,7 +1,7 @@
 <template>
-  <div id="editor">
-    <textarea :value="input" @input="update"></textarea>
-    <div v-html="compiledMarkdown"></div>
+  <div class="editor">
+    <textarea class="col_1" :value="input" @input="update"></textarea>
+    <div class="col_2" v-html="compiledMarkdown"></div>
   </div>
 </template>
 
@@ -18,11 +18,16 @@ export default {
     };
   },
   computed: {
+    /*
+    计算属性是基于它们的响应式依赖进行缓存的
+    如果计算属性getter没有响应式依赖，计算属性就不会更新
+    */
     compiledMarkdown: function() {
       return marked(this.input, { sanitize: true });
     },
   },
   methods: {
+    // 300ms 刷新一次，从input事件获得目标控件的值
     update: _.debounce(function(e) {
       this.input = e.target.value;
     }, 300),
@@ -31,35 +36,16 @@ export default {
 </script>
 
 <style scoped>
-#editor {
-  margin: 0;
-  height: 100%;
-  font-family: "Helvetica Neue", Arial, sans-serif;
-  color: #333;
+.editor {
+  display: flex;
+  width: 100%;
+  height: 600px;
 }
-
-textarea,
-#editor div {
-  display: inline-block;
+.col_1 {
   width: 49%;
-  height: 100%;
-  vertical-align: top;
-  box-sizing: border-box;
-  padding: 0 20px;
+  resize: vertical;
 }
-
-textarea {
-  border: none;
-  border-right: 1px solid #ccc;
-  resize: none;
-  outline: none;
-  background-color: #f6f6f6;
-  font-size: 14px;
-  font-family: "Monaco", courier, monospace;
-  padding: 20px;
-}
-
-code {
-  color: #f66;
+.col_2 {
+  width: 50%;
 }
 </style>
