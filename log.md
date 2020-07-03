@@ -193,3 +193,10 @@
 
 **Link to work:** [MDN](https://github.com/likui911/100-days-of-code/tree/master/vue_crash_todolist)
 **Link to work:** [MDN](https://github.com/likui911/100-days-of-code/tree/master/geektime-vue)
+
+### Day 24: June 27, 2020 
+##### Learn vue.js
+**Thoughts:** 
+1. 仿teambition标签控件
+
+**Link to work:** [MDN](https://github.com/likui911/100-days-of-code/tree/master/vue_drowdown_tags)
