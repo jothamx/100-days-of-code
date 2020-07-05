@@ -1,87 +1,114 @@
 <template>
   <div class="container">
-    <el-tag
-      :key="index"
-      v-for="(tag, index) in tempArr"
-      closable
-      :disable-transitions="false"
-      @close="handleClose(tag)"
-      >{{ tag }}</el-tag
-    >
+    <ul class=" tag-picker-list">
+      <li
+        class="tag-item"
+        :class="'tag-level-' + tag.level"
+        :key="index"
+        v-for="(tag, index) in tempArr"
+      >
+        <span>{{ tag.name }}</span>
+        <i class="tag-remove el-icon-error" @click="handleClose(tag)"></i>
+      </li>
+      <li>
+        <el-popover placement="bottom-start" width="250" trigger="click">
+          <div class="popover">
+            <div class="input-div">
+              <input
+                class="tag-input"
+                placeholder="搜索标签"
+                v-model="inputValue"
+                @keyup.enter="enterSearch"
+              />
+              <div class="btn-in-input">
+                <button class="el-icon-circle-plus" @click="addTag" />
+              </div>
+            </div>
 
-    <el-popover placement="bottom-start" width="250" trigger="click">
-      <div class="popover">
-        <div class="input-div">
-          <input
-            class="tag-input"
-            placeholder="搜索标签"
-            v-model="inputValue"
-            @keyup.enter="enterSearch"
-          />
-          <div class="btn-in-input">
-            <button class="el-icon-circle-plus" @click="addTag" />
+            <div v-if="searchTags.length">
+              <ul class="tag-list">
+                <li
+                  class="tag-list-item"
+                  :key="index"
+                  v-for="(tag, index) in searchTags"
+                  @mouseover="mouseOver(tag)"
+                  @mouseleave="mouseLeave"
+                >
+                  <div class="tag-circle-wrap">
+                    <div class="tag-circle" :class="'level-' + tag.level"></div>
+                  </div>
+                  <div @click="selectTagItem(tag)" class="tag-name">
+                    {{ tag.name }}
+                  </div>
+                  <span
+                    v-if="tag.name == hoverItem"
+                    @click="deleteItem(tag)"
+                    class="tag-checked el-icon-delete"
+                  ></span>
+                  <span
+                    v-if="tag.check"
+                    class="tag-checked el-icon-check"
+                  ></span>
+                </li>
+              </ul>
+            </div>
           </div>
-        </div>
-
-        <div v-if="searchTags.length">
-          <ul class="tag-list">
-            <li
-              class="tag-list-item"
-              :key="index"
-              v-for="(tag, index) in searchTags"
-              @mouseover="mouseOver(tag)"
-              @mouseleave="mouseLeave"
-            >
-              <div class="tag-circle-wrap">
-                <div
-                  class="tag-circle"
-                  style="background-color: rgb(27, 154, 238);"
-                ></div>
-              </div>
-              <div @click="selectTagItem(tag)" class="tag-name">
-                {{ tag.name }}
-              </div>
-              <span
-                v-if="tag.name == hoverItem"
-                @click="deleteItem(tag)"
-                class="tag-checked el-icon-delete"
-              ></span>
-              <span v-if="tag.check" class="tag-checked el-icon-check"></span>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="add-tag" slot="reference">
-        <button v-if="tagsEmpty" class="button-new-tag">
-          添加标签
-        </button>
-        <button v-else class="button-new-tag plus-icon el-icon-circle-plus" />
-      </div>
-    </el-popover>
+          <div class="tag-item" slot="reference">
+            <button v-if="tagsEmpty" class="button-new-tag">
+              添加标签
+            </button>
+            <button
+              v-else
+              class="button-new-tag plus-icon el-icon-circle-plus"
+            />
+          </div>
+        </el-popover>
+      </li>
+    </ul>
   </div>
 </template>
 
 <script>
+function findObjectByKey(array, key, value) {
+  for (var i = 0; i < array.length; i++) {
+    if (array[i][key] === value) {
+      return i;
+    }
+  }
+  return -1; //not found
+}
+
 export default {
   name: "dropdownTags",
-  props: ["selTagList", "tagList"],
-
+  props: {
+    selTagList: Array,
+    tagList: Array,
+  },
   mounted: function() {
-    for (let i = 0; i < this.selTagList.length; i++) {
-      this.tempArr.push(this.selTagList[i]);
-    }
     for (let i = 0; i < this.tagList.length; i++) {
-      let check = false;
-      if (this.selTagList.includes(this.tagList[i])) {
-        check = true;
+      let lv = 1; //level的取值范围为1-6
+      if (this.tagList[i].level <= 6 || this.tagList[i].level > 1) {
+        lv = this.tagList[i].level;
       }
-      this.dynamicTags.push({ name: this.tagList[i], check: check });
+      this.dynamicTags.push({
+        name: this.tagList[i].name,
+        check: false,
+        level: lv,
+      });
+    }
+
+    for (let i = 0; i < this.selTagList.length; i++) {
+      let tag = this.getTagInfo(this.selTagList[i]);
+      if (tag) {
+        this.tempArr.push({ name: tag.name, level: tag.level });
+        tag.check = true;
+      }
     }
   },
   data() {
     return {
       inputValue: "",
-      dynamicTags: [],
+      dynamicTags: [], //{name,check,level}
       hoverItem: "",
       tempArr: [],
     };
@@ -127,9 +154,10 @@ export default {
   },
   methods: {
     handleClose(tag) {
-      this.tempArr.splice(this.tempArr.indexOf(tag), 1);
+      this.tempArr.splice(findObjectByKey(this.tempArr, "name", tag.name), 1);
+
       for (let i = 0; i < this.dynamicTags.length; i++) {
-        if (this.dynamicTags[i].name == tag) {
+        if (this.dynamicTags[i].name == tag.name) {
           this.dynamicTags[i].check = false;
         }
       }
@@ -145,9 +173,9 @@ export default {
       let i = this.dynamicTags.indexOf(tag);
       this.dynamicTags[i].check = !this.dynamicTags[i].check;
       if (this.dynamicTags[i].check == true) {
-        this.tempArr.push(tag.name);
+        this.tempArr.push({ name: tag.name, level: tag.level });
       } else {
-        this.tempArr.splice(this.tempArr.indexOf(tag.name), 1);
+        this.tempArr.splice(findObjectByKey(this.tempArr, "name", tag.name), 1);
       }
     },
     mouseOver(tag) {
@@ -174,6 +202,13 @@ export default {
       }
       return false;
     },
+    getTagInfo(tag_name) {
+      for (let i = 0; i < this.dynamicTags.length; i++) {
+        if (this.dynamicTags[i].name == tag_name) {
+          return this.dynamicTags[i];
+        }
+      }
+    },
   },
 };
 </script>
@@ -182,12 +217,103 @@ export default {
 .container {
   display: flex;
   flex-wrap: wrap;
-  align-items: left;
-}
+  align-items: center;
 
-.el-tag {
-  margin-right: 10px;
-  margin-bottom: 10px;
+  .tag-picker-list {
+    list-style: none;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+    .tag-item {
+      margin-right: 10px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      height: 28px;
+      border: none;
+      border-radius: 28px;
+      padding: 0 12px;
+
+      &:hover {
+        .tag-remove {
+          display: inline;
+        }
+      }
+
+      .tag-remove {
+        margin-left: 3px;
+        display: none;
+      }
+    }
+    .tag-level-1 {
+      color: #0171c2;
+      background-color: #f2fbff;
+      .tag-remove {
+        color: #004f8a;
+      }
+    }
+
+    .tag-level-2 {
+      color: #038a24;
+      background-color: #edffed;
+      .tag-remove {
+        color: #006d1f;
+      }
+    }
+    .tag-level-3 {
+      color: #008074;
+      background-color: #e5f5f2;
+      .tag-remove {
+        color: #006a67;
+      }
+    }
+    .tag-level-4 {
+      color: #3d3c9d;
+      background-color: #f5f6ff;
+      .tag-remove {
+        color: #2e2a75;
+      }
+    }
+    .tag-level-5 {
+      color: #d46b08;
+      background-color: #fff7e6;
+      .tag-remove {
+        color: #ad4e01;
+      }
+    }
+    .tag-level-6 {
+      color: #c21c07;
+      background-color: #ffeded;
+      .tag-remove {
+        color: #9a1604;
+      }
+    }
+  }
+
+  .button-new-tag {
+    position: relative;
+    border: none;
+    display: flex;
+    align-items: center;
+    height: 68px;
+    line-height: 30px;
+    padding-top: 0;
+    padding-bottom: 0;
+    background-color: Transparent;
+    outline: none;
+    color: #bfbfbf;
+
+    &:hover {
+      color: #1b9aee;
+    }
+  }
+
+  .plus-icon {
+    font-size: 1.2rem;
+  }
 }
 
 .popover {
@@ -197,26 +323,26 @@ export default {
   .input-div {
     display: flex;
     border-bottom: 1px solid #e5e5e5;
-  }
-
-  .tag-input {
-    border: none;
-    padding: 8px 18px;
-    height: 30px;
-    line-height: 26px;
-    outline: none;
-  }
-
-  .btn-in-input {
-    width: 48px;
-    display: flex;
-
-    button {
-      background-color: Transparent;
-      outline: none;
+    justify-content: space-between;
+    .tag-input {
       border: none;
-      font-size: 1.3rem;
-      color: #1b9aee;
+      padding: 8px 18px;
+      height: 30px;
+      line-height: 26px;
+      outline: none;
+    }
+
+    .btn-in-input {
+      width: 28px;
+      // padding-right: 0;
+      // display: flex;
+      button {
+        background-color: Transparent;
+        outline: none;
+        border: none;
+        font-size: 1.3rem;
+        color: #1b9aee;
+      }
     }
   }
 
@@ -246,7 +372,6 @@ export default {
     }
 
     .tag-circle {
-      background: #000;
       width: 8px;
       height: 8px;
       border-radius: 50%;
@@ -275,28 +400,34 @@ export default {
     cursor: pointer;
     align-items: center;
     padding: 0 16px;
-  }
-}
-
-.add-tag {
-  .button-new-tag {
-    position: relative;
-    border: none;
-    height: 32px;
-    line-height: 30px;
-    padding-top: 0;
-    padding-bottom: 0;
-    background-color: Transparent;
-    outline: none;
-    color: #bfbfbf;
 
     &:hover {
-      color: #1b9aee;
+      background-color: #f7f7f7;
     }
-  }
 
-  .plus-icon {
-    font-size: 1.2rem;
+    .level-1 {
+      background-color: rgb(27, 154, 238);
+    }
+
+    .level-2 {
+      background-color: rgb(21, 173, 49);
+    }
+
+    .level-3 {
+      background-color: rgb(0, 156, 149);
+    }
+
+    .level-4 {
+      background-color: rgb(106, 112, 184);
+    }
+
+    .level-5 {
+      background-color: rgb(250, 140, 21);
+    }
+
+    .level-6 {
+      background-color: rgb(230, 36, 18);
+    }
   }
 }
 </style>

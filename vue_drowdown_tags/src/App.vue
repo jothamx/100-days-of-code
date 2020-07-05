@@ -22,7 +22,14 @@ export default {
   data() {
     return {
       selTagList: ["标签三", "标签五", "标签六"],
-      tagList: ["标签一", "标签二", "标签三", "标签四", "标签五", "标签六"],
+      tagList: [
+        { name: "标签一", level: 1 },
+        { name: "标签二", level: 2 },
+        { name: "标签三", level: 3 },
+        { name: "标签四", level: 4 },
+        { name: "标签五", level: 5 },
+        { name: "标签六", level: 6 },
+      ],
     };
   },
   methods: {
@@ -47,6 +54,5 @@ export default {
   width: 50%;
   margin-left: auto;
   margin-right: auto;
-  text-align: left;
 }
 </style>
