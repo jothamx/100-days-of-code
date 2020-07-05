@@ -217,3 +217,11 @@
 1. 仿teambition标签控件
 
 **Link to work:** [MDN](https://github.com/likui911/100-days-of-code/tree/master/vue_drowdown_tags)
+
+### Day 27: July 5, 2020 
+##### Learn vue.js
+**Thoughts:** 
+1. 标签支持6种颜色
+2. 增加标签时支持选择颜色
+
+**Link to work:** [MDN](https://github.com/likui911/100-days-of-code/tree/master/vue_drowdown_tags)
