@@ -51,14 +51,12 @@
           </ul>
         </div>
       </div>
-      <button v-if="tagsEmpty" class="button-new-tag" slot="reference">
-        添加标签
-      </button>
-      <button
-        v-else
-        class="button-new-tag plus-icon el-icon-circle-plus"
-        slot="reference"
-      />
+      <div class="add-tag" slot="reference">
+        <button v-if="tagsEmpty" class="button-new-tag">
+          添加标签
+        </button>
+        <button v-else class="button-new-tag plus-icon el-icon-circle-plus" />
+      </div>
     </el-popover>
   </div>
 </template>
@@ -180,118 +178,125 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .container {
   display: flex;
   flex-wrap: wrap;
   align-items: left;
 }
+
 .el-tag {
   margin-right: 10px;
   margin-bottom: 10px;
-}
-.button-new-tag {
-  position: relative;
-  border: none;
-  height: 32px;
-  line-height: 30px;
-  padding-top: 0;
-  padding-bottom: 0;
-  background-color: Transparent;
-  outline: none;
-  color: #bfbfbf;
-}
-.plus-icon {
-  font-size: 1.2rem;
-}
-.button-new-tag:hover {
-  color: #1b9aee;
 }
 
 .popover {
   margin: 0;
   padding: 0;
   width: 250px;
+  .input-div {
+    display: flex;
+    border-bottom: 1px solid #e5e5e5;
+  }
+
+  .tag-input {
+    border: none;
+    padding: 8px 18px;
+    height: 30px;
+    line-height: 26px;
+    outline: none;
+  }
+
+  .btn-in-input {
+    width: 48px;
+    display: flex;
+
+    button {
+      background-color: Transparent;
+      outline: none;
+      border: none;
+      font-size: 1.3rem;
+      color: #1b9aee;
+    }
+  }
+
+  .tag-list {
+    list-style: none;
+    padding: 4px 0;
+    max-height: 208px;
+    overflow-y: scroll;
+    white-space: nowrap;
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #8c8c8c;
+      border-left: 2px solid transparent;
+    }
+
+    &::-webkit-scrollbar-track {
+      background-color: #e5e5e5;
+      border-left: 2px solid transparent;
+    }
+
+    &::-webkit-scrollbar {
+      width: 7px;
+    }
+
+    .tag-circle-wrap {
+      padding-right: 8px;
+    }
+
+    .tag-circle {
+      background: #000;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+
+    .tag-name {
+      flex: 1;
+      font-size: 14px;
+      color: #595959;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .tag-checked {
+      margin-right: 0;
+      font-size: 16px;
+      color: #8c8c8c;
+    }
+  }
+
+  .tag-list-item {
+    margin-left: 0;
+    line-height: 40px;
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    padding: 0 16px;
+  }
 }
 
-.popover .input-div {
-  display: flex;
-  border-bottom: 1px solid #e5e5e5;
-}
+.add-tag {
+  .button-new-tag {
+    position: relative;
+    border: none;
+    height: 32px;
+    line-height: 30px;
+    padding-top: 0;
+    padding-bottom: 0;
+    background-color: Transparent;
+    outline: none;
+    color: #bfbfbf;
 
-.popover .tag-input {
-  border: none;
-  padding: 8px 18px;
-  height: 30px;
-  line-height: 26px;
-  outline: none;
-}
+    &:hover {
+      color: #1b9aee;
+    }
+  }
 
-.popover .btn-in-input {
-  width: 48px;
-  display: flex;
-}
-
-.popover .btn-in-input button {
-  background-color: Transparent;
-  outline: none;
-  border: none;
-  font-size: 1.3rem;
-  color: #1b9aee;
-}
-
-.popover .tag-list {
-  list-style: none;
-  padding: 4px 0;
-  max-height: 208px;
-  overflow-y: scroll;
-  white-space: nowrap;
-}
-.popover .tag-list::-webkit-scrollbar-thumb {
-  background-color: #8c8c8c;
-  border-left: 2px solid transparent;
-}
-
-.popover .tag-list::-webkit-scrollbar-track {
-  background-color: #e5e5e5;
-  border-left: 2px solid transparent;
-}
-.popover .tag-list::-webkit-scrollbar {
-  width: 7px;
-}
-
-.popover .tag-list-item {
-  margin-left: 0;
-  line-height: 40px;
-  display: flex;
-  cursor: pointer;
-  align-items: center;
-  padding: 0 16px;
-}
-
-.popover .tag-circle-wrap {
-  padding-right: 8px;
-}
-
-.popover .tag-circle {
-  background: #000;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-}
-
-.popover .tag-name {
-  flex: 1;
-  font-size: 14px;
-  color: #595959;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.popover .tag-checked {
-  margin-right: 0;
-  font-size: 16px;
-  color: #8c8c8c;
+  .plus-icon {
+    font-size: 1.2rem;
+  }
 }
 </style>

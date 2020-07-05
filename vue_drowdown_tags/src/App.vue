@@ -2,7 +2,12 @@
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png" />
     <div>
-      <dropdownTags :selTagList="selTagList" :tagList="tagList" @change="update" class="dropdown" />
+      <dropdownTags
+        :selTagList="selTagList"
+        :tagList="tagList"
+        @change="update"
+        class="dropdown"
+      />
     </div>
   </div>
 </template>
@@ -12,20 +17,20 @@ import dropdownTags from "./components/dropdownTags.vue";
 export default {
   name: "App",
   components: {
-    dropdownTags
+    dropdownTags,
   },
   data() {
     return {
       selTagList: ["标签三", "标签五", "标签六"],
-      tagList: ["标签一", "标签二", "标签三", "标签四", "标签五", "标签六"]
+      tagList: ["标签一", "标签二", "标签三", "标签四", "标签五", "标签六"],
     };
   },
   methods: {
     update: function(a, b) {
       this.selTagList = a;
       this.tagList = b;
-    }
-  }
+    },
+  },
 };
 </script>
 
