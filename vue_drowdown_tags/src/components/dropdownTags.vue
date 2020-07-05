@@ -25,8 +25,9 @@
               </div>
             </div>
 
-            <div v-if="searchTags.length">
-              <ul class="tag-list">
+            <!-- <div v-if="searchTags.length"> -->
+            <div v-if="state === 'search'">
+              <ul class="tag-list tag-list-scroll">
                 <li
                   class="tag-list-item"
                   :key="index"
@@ -51,6 +52,63 @@
                   ></span>
                 </li>
               </ul>
+            </div>
+            <div v-if="state === 'add'">
+              <ul class="color-picker">
+                <li class="color-circle" @click="changeLevel(1)">
+                  <div class="color-disc level-1">
+                    <i
+                      class="icon-tick"
+                      :class="level == 1 ? 'el-icon-check' : ''"
+                    ></i>
+                  </div>
+                </li>
+                <li class="color-circle" @click="changeLevel(2)">
+                  <div class="color-disc level-2">
+                    <i
+                      class="icon-tick"
+                      :class="level == 2 ? 'el-icon-check' : ''"
+                    ></i>
+                  </div>
+                </li>
+                <li class="color-circle" @click="changeLevel(3)">
+                  <div class="color-disc level-3">
+                    <i
+                      class="icon-tick"
+                      :class="level == 3 ? 'el-icon-check' : ''"
+                    ></i>
+                  </div>
+                </li>
+                <li class="color-circle" @click="changeLevel(4)">
+                  <div class="color-disc level-4">
+                    <i
+                      class="icon-tick"
+                      :class="level == 4 ? 'el-icon-check' : ''"
+                    ></i>
+                  </div>
+                </li>
+                <li class="color-circle" @click="changeLevel(5)">
+                  <div class="color-disc level-5">
+                    <i
+                      class="icon-tick"
+                      :class="level == 5 ? 'el-icon-check' : ''"
+                    ></i>
+                  </div>
+                </li>
+                <li class="color-circle" @click="changeLevel(6)">
+                  <div class="color-disc level-6">
+                    <i
+                      class="icon-tick"
+                      :class="level == 6 ? 'el-icon-check' : ''"
+                    ></i>
+                  </div>
+                </li>
+              </ul>
+              <div class="create-tag-btn-wrap">
+                <button class="create-tag-btn" type="button" @click="addTag">
+                  <span>创建</span>
+                </button>
+              </div>
             </div>
           </div>
           <div class="tag-item" slot="reference">
@@ -111,6 +169,7 @@ export default {
       dynamicTags: [], //{name,check,level}
       hoverItem: "",
       tempArr: [],
+      level: 1,
     };
   },
   computed: {
@@ -143,6 +202,14 @@ export default {
       }
       return arr;
     },
+    state: function() {
+      //search搜索状态，add增加状态，modify修改状态
+      if (this.searchTags.length == 0) {
+        return "add";
+      } else {
+        return "search";
+      }
+    },
   },
   watch: {
     tempArr: function() {
@@ -166,7 +233,12 @@ export default {
       if (this.inputValue == "" || this.isExist(this.inputValue)) {
         return;
       }
-      this.dynamicTags.push({ name: this.inputValue, check: false });
+      this.dynamicTags.push({
+        name: this.inputValue,
+        check: false,
+        level: this.level,
+      });
+      this.tempArr.push({ name: this.inputValue, level: this.level });
       this.inputValue = "";
     },
     selectTagItem(tag) {
@@ -189,7 +261,9 @@ export default {
       this.tempArr.splice(this.tempArr.indexOf(tag.name), 1);
     },
     enterSearch() {
-      if (this.searchTags.length > 0) {
+      if (this.state == "add") {
+        this.addTag();
+      } else if (this.searchTags.length > 0) {
         let tag = this.searchTags[0];
         this.selectTagItem(tag);
       }
@@ -208,6 +282,9 @@ export default {
           return this.dynamicTags[i];
         }
       }
+    },
+    changeLevel(lv) {
+      this.level = lv;
     },
   },
 };
@@ -334,8 +411,8 @@ export default {
 
     .btn-in-input {
       width: 28px;
-      // padding-right: 0;
-      // display: flex;
+      padding-right: 0;
+      display: flex;
       button {
         background-color: Transparent;
         outline: none;
@@ -346,13 +423,9 @@ export default {
     }
   }
 
-  .tag-list {
-    list-style: none;
-    padding: 4px 0;
+  .tag-list-scroll {
     max-height: 208px;
     overflow-y: scroll;
-    white-space: nowrap;
-
     &::-webkit-scrollbar-thumb {
       background-color: #8c8c8c;
       border-left: 2px solid transparent;
@@ -366,6 +439,12 @@ export default {
     &::-webkit-scrollbar {
       width: 7px;
     }
+  }
+
+  .tag-list {
+    list-style: none;
+    padding: 4px 0;
+    white-space: nowrap;
 
     .tag-circle-wrap {
       padding-right: 8px;
@@ -404,30 +483,75 @@ export default {
     &:hover {
       background-color: #f7f7f7;
     }
+  }
 
-    .level-1 {
+  .color-picker {
+    padding: 20px 16px;
+    display: flex;
+    justify-content: space-between;
+    .color-circle {
+      line-height: 20px;
+      list-style: none;
+    }
+  }
+
+  .color-disc {
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 24px;
+
+    .icon-tick {
+      width: 24px;
+      height: 24px;
+      font-size: 14px;
+      color: #fff;
+      line-height: 24px;
+      text-align: center;
+    }
+  }
+
+  .create-tag-btn-wrap {
+    margin-left: 16px;
+    margin-right: 16px;
+
+    .create-tag-btn {
       background-color: rgb(27, 154, 238);
+      color: #fff;
+      width: 100%;
+      height: 36px;
+      padding: 0 16px;
+      border-radius: 4px;
+      outline: none;
+      font-size: 14px;
+      border: none;
     }
+  }
 
-    .level-2 {
-      background-color: rgb(21, 173, 49);
-    }
+  .level-1 {
+    background-color: rgb(27, 154, 238);
+  }
 
-    .level-3 {
-      background-color: rgb(0, 156, 149);
-    }
+  .level-2 {
+    background-color: rgb(21, 173, 49);
+  }
 
-    .level-4 {
-      background-color: rgb(106, 112, 184);
-    }
+  .level-3 {
+    background-color: rgb(0, 156, 149);
+  }
 
-    .level-5 {
-      background-color: rgb(250, 140, 21);
-    }
+  .level-4 {
+    background-color: rgb(106, 112, 184);
+  }
 
-    .level-6 {
-      background-color: rgb(230, 36, 18);
-    }
+  .level-5 {
+    background-color: rgb(250, 140, 21);
+  }
+
+  .level-6 {
+    background-color: rgb(230, 36, 18);
   }
 }
 </style>
