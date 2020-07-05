@@ -2,11 +2,12 @@
   <div class="container">
     <el-tag
       :key="index"
-      v-for="(tag,index) in tempArr"
+      v-for="(tag, index) in tempArr"
       closable
       :disable-transitions="false"
       @close="handleClose(tag)"
-    >{{tag}}</el-tag>
+      >{{ tag }}</el-tag
+    >
 
     <el-popover placement="bottom-start" width="250" trigger="click">
       <div class="popover">
@@ -27,16 +28,21 @@
             <li
               class="tag-list-item"
               :key="index"
-              v-for="(tag,index) in searchTags"
+              v-for="(tag, index) in searchTags"
               @mouseover="mouseOver(tag)"
               @mouseleave="mouseLeave"
             >
               <div class="tag-circle-wrap">
-                <div class="tag-circle" style="background-color: rgb(27, 154, 238);"></div>
+                <div
+                  class="tag-circle"
+                  style="background-color: rgb(27, 154, 238);"
+                ></div>
               </div>
-              <div @click="selectTagItem(tag)" class="tag-name">{{tag.name}}</div>
+              <div @click="selectTagItem(tag)" class="tag-name">
+                {{ tag.name }}
+              </div>
               <span
-                v-if="tag.name==hoverItem"
+                v-if="tag.name == hoverItem"
                 @click="deleteItem(tag)"
                 class="tag-checked el-icon-delete"
               ></span>
@@ -45,8 +51,14 @@
           </ul>
         </div>
       </div>
-      <button v-if="tagsEmpty" class="button-new-tag" slot="reference">添加标签</button>
-      <button v-else class="button-new-tag plus-icon el-icon-circle-plus" slot="reference" />
+      <button v-if="tagsEmpty" class="button-new-tag" slot="reference">
+        添加标签
+      </button>
+      <button
+        v-else
+        class="button-new-tag plus-icon el-icon-circle-plus"
+        slot="reference"
+      />
     </el-popover>
   </div>
 </template>
@@ -73,7 +85,7 @@ export default {
       inputValue: "",
       dynamicTags: [],
       hoverItem: "",
-      tempArr: []
+      tempArr: [],
     };
   },
   computed: {
@@ -81,7 +93,7 @@ export default {
       return this.tempArr.length == 0;
     },
     selectedTags: function() {
-      return this.dynamicTags.filter(item => {
+      return this.dynamicTags.filter((item) => {
         return item.check == true;
       });
     },
@@ -105,7 +117,7 @@ export default {
         }
       }
       return arr;
-    }
+    },
   },
   watch: {
     tempArr: function() {
@@ -113,11 +125,11 @@ export default {
     },
     dynamicTags: function() {
       this.$emit("change", this.tempArr, this.dynamicTagsWithoutState);
-    }
+    },
   },
   methods: {
     handleClose(tag) {
-      this.tempArr.splice(this.tempArr.indexOf(tag.name), 1);
+      this.tempArr.splice(this.tempArr.indexOf(tag), 1);
       for (let i = 0; i < this.dynamicTags.length; i++) {
         if (this.dynamicTags[i].name == tag) {
           this.dynamicTags[i].check = false;
@@ -154,8 +166,6 @@ export default {
       if (this.searchTags.length > 0) {
         let tag = this.searchTags[0];
         this.selectTagItem(tag);
-      } else {
-        this.addTag();
       }
     },
     isExist(tag_name) {
@@ -165,8 +175,8 @@ export default {
         }
       }
       return false;
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -176,7 +186,7 @@ export default {
   flex-wrap: wrap;
   align-items: left;
 }
-.el-tag{
+.el-tag {
   margin-right: 10px;
   margin-bottom: 10px;
 }
