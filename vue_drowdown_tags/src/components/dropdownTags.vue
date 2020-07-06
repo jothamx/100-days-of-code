@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <ul class=" tag-picker-list">
+    <ul class="tag-picker-list">
       <li
         class="tag-item"
         :class="'tag-level-' + tag.level"
@@ -15,10 +15,12 @@
           <div class="popover">
             <div class="input-div">
               <input
+                ref="input"
                 class="tag-input"
                 placeholder="搜索标签"
                 v-model="inputValue"
                 @keyup.enter="enterSearch"
+                @blur="keepFocus"
               />
               <div class="btn-in-input">
                 <button class="el-icon-circle-plus" @click="addTag" />
@@ -38,18 +40,13 @@
                   <div class="tag-circle-wrap">
                     <div class="tag-circle" :class="'level-' + tag.level"></div>
                   </div>
-                  <div @click="selectTagItem(tag)" class="tag-name">
-                    {{ tag.name }}
-                  </div>
+                  <div @click="selectTagItem(tag)" class="tag-name">{{ tag.name }}</div>
                   <span
                     v-if="tag.name == hoverItem"
                     @click="deleteItem(tag)"
                     class="tag-checked el-icon-delete"
                   ></span>
-                  <span
-                    v-if="tag.check"
-                    class="tag-checked el-icon-check"
-                  ></span>
+                  <span v-if="tag.check" class="tag-checked el-icon-check"></span>
                 </li>
               </ul>
             </div>
@@ -57,68 +54,45 @@
               <ul class="color-picker">
                 <li class="color-circle" @click="changeLevel(1)">
                   <div class="color-disc level-1">
-                    <i
-                      class="icon-tick"
-                      :class="level == 1 ? 'el-icon-check' : ''"
-                    ></i>
+                    <i class="icon-tick" :class="level == 1 ? 'el-icon-check' : ''"></i>
                   </div>
                 </li>
                 <li class="color-circle" @click="changeLevel(2)">
                   <div class="color-disc level-2">
-                    <i
-                      class="icon-tick"
-                      :class="level == 2 ? 'el-icon-check' : ''"
-                    ></i>
+                    <i class="icon-tick" :class="level == 2 ? 'el-icon-check' : ''"></i>
                   </div>
                 </li>
                 <li class="color-circle" @click="changeLevel(3)">
                   <div class="color-disc level-3">
-                    <i
-                      class="icon-tick"
-                      :class="level == 3 ? 'el-icon-check' : ''"
-                    ></i>
+                    <i class="icon-tick" :class="level == 3 ? 'el-icon-check' : ''"></i>
                   </div>
                 </li>
                 <li class="color-circle" @click="changeLevel(4)">
                   <div class="color-disc level-4">
-                    <i
-                      class="icon-tick"
-                      :class="level == 4 ? 'el-icon-check' : ''"
-                    ></i>
+                    <i class="icon-tick" :class="level == 4 ? 'el-icon-check' : ''"></i>
                   </div>
                 </li>
                 <li class="color-circle" @click="changeLevel(5)">
                   <div class="color-disc level-5">
-                    <i
-                      class="icon-tick"
-                      :class="level == 5 ? 'el-icon-check' : ''"
-                    ></i>
+                    <i class="icon-tick" :class="level == 5 ? 'el-icon-check' : ''"></i>
                   </div>
                 </li>
                 <li class="color-circle" @click="changeLevel(6)">
                   <div class="color-disc level-6">
-                    <i
-                      class="icon-tick"
-                      :class="level == 6 ? 'el-icon-check' : ''"
-                    ></i>
+                    <i class="icon-tick" :class="level == 6 ? 'el-icon-check' : ''"></i>
                   </div>
                 </li>
               </ul>
               <div class="create-tag-btn-wrap">
-                <button class="create-tag-btn" type="button" @click="addTag">
+                <button class="create-tag-btn" @click="addTag">
                   <span>创建</span>
                 </button>
               </div>
             </div>
           </div>
           <div class="tag-item" slot="reference">
-            <button v-if="tagsEmpty" class="button-new-tag">
-              添加标签
-            </button>
-            <button
-              v-else
-              class="button-new-tag plus-icon el-icon-circle-plus"
-            />
+            <button v-if="tagsEmpty" class="button-new-tag">添加标签</button>
+            <button v-else class="button-new-tag plus-icon el-icon-circle-plus" />
           </div>
         </el-popover>
       </li>
@@ -140,7 +114,7 @@ export default {
   name: "dropdownTags",
   props: {
     selTagList: Array,
-    tagList: Array,
+    tagList: Array
   },
   mounted: function() {
     for (let i = 0; i < this.tagList.length; i++) {
@@ -151,7 +125,7 @@ export default {
       this.dynamicTags.push({
         name: this.tagList[i].name,
         check: false,
-        level: lv,
+        level: lv
       });
     }
 
@@ -169,7 +143,7 @@ export default {
       dynamicTags: [], //{name,check,level}
       hoverItem: "",
       tempArr: [],
-      level: 1,
+      level: 1
     };
   },
   computed: {
@@ -177,7 +151,7 @@ export default {
       return this.tempArr.length == 0;
     },
     selectedTags: function() {
-      return this.dynamicTags.filter((item) => {
+      return this.dynamicTags.filter(item => {
         return item.check == true;
       });
     },
@@ -209,7 +183,7 @@ export default {
       } else {
         return "search";
       }
-    },
+    }
   },
   watch: {
     tempArr: function() {
@@ -217,7 +191,7 @@ export default {
     },
     dynamicTags: function() {
       this.$emit("change", this.tempArr, this.dynamicTagsWithoutState);
-    },
+    }
   },
   methods: {
     handleClose(tag) {
@@ -236,7 +210,7 @@ export default {
       this.dynamicTags.push({
         name: this.inputValue,
         check: false,
-        level: this.level,
+        level: this.level
       });
       this.tempArr.push({ name: this.inputValue, level: this.level });
       this.inputValue = "";
@@ -286,7 +260,10 @@ export default {
     changeLevel(lv) {
       this.level = lv;
     },
-  },
+    keepFocus() {
+      this.$refs.input.focus();
+    }
+  }
 };
 </script>
 
