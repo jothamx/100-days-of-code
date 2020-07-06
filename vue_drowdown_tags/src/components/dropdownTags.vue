@@ -155,10 +155,20 @@ export default {
         return item.check == true;
       });
     },
+    tempArrWithoutLevel: function() {
+      let arr = [];
+      for (let i = 0; i < this.tempArr.length; i++) {
+        arr.push(this.tempArr[i].name);
+      }
+      return arr;
+    },
     dynamicTagsWithoutState: function() {
       let arr = [];
       for (let i = 0; i < this.dynamicTags.length; i++) {
-        arr.push(this.dynamicTags[i].name);
+        arr.push({
+          name: this.dynamicTags[i].name,
+          level: this.dynamicTags[i].level
+        });
       }
       return arr;
     },
@@ -187,10 +197,18 @@ export default {
   },
   watch: {
     tempArr: function() {
-      this.$emit("change", this.tempArr, this.dynamicTagsWithoutState);
+      this.$emit(
+        "change",
+        this.tempArrWithoutLevel,
+        this.dynamicTagsWithoutState
+      );
     },
     dynamicTags: function() {
-      this.$emit("change", this.tempArr, this.dynamicTagsWithoutState);
+      this.$emit(
+        "change",
+        this.tempArrWithoutLevel,
+        this.dynamicTagsWithoutState
+      );
     }
   },
   methods: {
