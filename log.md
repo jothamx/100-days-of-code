@@ -84,7 +84,7 @@
 **Thoughts:** 
 1. 利用python BeautifulSoup获取潘通色板
 
-**Link to work:** [MDN](https://github.com/likui911/100-days-of-code/tree/master/PythonPractice)
+**Link to work:** [PythonPractice](https://github.com/likui911/100-days-of-code/tree/master/PythonPractice)
 
 ### Day 10: May 7, 2020 
 ##### try "Survery Form"
@@ -92,7 +92,7 @@
 **Thoughts:** 
 1. 掌握了基本的控件以及CSS的用法，布局还是搞不定
 
-**Link to work:** [MDN](https://github.com/likui911/100-days-of-code/tree/master/freecodecamp)
+**Link to work:** [freecodecamp](https://github.com/likui911/100-days-of-code/tree/master/freecodecamp)
 
 ### Day 11: May 11, 2020 
 ##### completed "Survery Form"
@@ -100,7 +100,7 @@
 **Thoughts:** 
 1. 将Survery Form的布局重新调整了，基本上熟悉了CSS布局
 
-**Link to work:** [MDN](https://github.com/likui911/100-days-of-code/tree/master/freecodecamp)
+**Link to work:** [freecodecamp](https://github.com/likui911/100-days-of-code/tree/master/freecodecamp)
 
 ### Day 12: May 12, 2020 
 ##### try "ProductLandingPage"
@@ -108,7 +108,7 @@
 **Thoughts:** 
 1. Product Landing Page进行界面布局，header使用fixed固定
 
-**Link to work:** [MDN](https://github.com/likui911/100-days-of-code/tree/master/freecodecamp)
+**Link to work:** [freecodecamp](https://github.com/likui911/100-days-of-code/tree/master/freecodecamp)
 
 ### Day 13: May 15, 2020 
 ##### try "ProductLandingPage"
@@ -116,7 +116,7 @@
 **Thoughts:** 
 1. 增加界面元素，调整布局
 
-**Link to work:** [MDN](https://github.com/likui911/100-days-of-code/tree/master/freecodecamp)
+**Link to work:** [freecodecamp](https://github.com/likui911/100-days-of-code/tree/master/freecodecamp)
 
 ### Day 14: May 19, 2020 
 ##### try "ProductLandingPage"
@@ -124,7 +124,7 @@
 **Thoughts:** 
 1. 重新调整布局
 
-**Link to work:** [MDN](https://github.com/likui911/100-days-of-code/tree/master/freecodecamp)
+**Link to work:** [freecodecamp](https://github.com/likui911/100-days-of-code/tree/master/freecodecamp)
 
 ### Day 15: May 23, 2020 
 ##### completed "ProductLandingPage"
@@ -134,7 +134,7 @@
 1. ProductLandingPage,完成界面布局，使用@media动态调整布局
 2. TechnicalDocumentationPage
 
-**Link to work:** [MDN](https://github.com/likui911/100-days-of-code/tree/master/freecodecamp)
+**Link to work:** [freecodecamp](https://github.com/likui911/100-days-of-code/tree/master/freecodecamp)
 
 ### Day 16: May 24, 2020 
 ##### completed "PersonalPortfolio"
@@ -142,17 +142,17 @@
 **Thoughts:** 
 1. PersonalPortfolio,完成界面布局
 
-**Link to work:** [MDN](https://github.com/likui911/100-days-of-code/tree/master/freecodecamp)
+**Link to work:** [freecodecamp](https://github.com/likui911/100-days-of-code/tree/master/freecodecamp)
 
 ### Day 17: May 26, 2020 
 ##### Learn "Flask"
 
-**Link to work:** [MDN](https://github.com/likui911/100-days-of-code/tree/master/FlaskWeb)
+**Link to work:** [FlaskWeb](https://github.com/likui911/100-days-of-code/tree/master/FlaskWeb)
 
 ### Day 18: June 3, 2020 
 ##### Learn "flask_bootstrap"
 
-**Link to work:** [MDN](https://github.com/likui911/100-days-of-code/tree/master/FlaskWeb)
+**Link to work:** [FlaskWeb](https://github.com/likui911/100-days-of-code/tree/master/FlaskWeb)
 
 ### Day 19: June 7, 2020 
 ##### Learn "flask_bootstrap"
@@ -160,14 +160,14 @@
 1. 使用venv创建virtual environment
 2. flask_moment格式化当前时间
 
-**Link to work:** [MDN](https://github.com/likui911/100-days-of-code/tree/master/FlaskWeb)
+**Link to work:** [FlaskWeb](https://github.com/likui911/100-days-of-code/tree/master/FlaskWeb)
 
 ### Day 20: June 15, 2020 
 ##### Learn "flask_bootstrap"
 **Thoughts:** 
 1. 引入flask_wtf，生成form表单
 
-**Link to work:** [MDN](https://github.com/likui911/100-days-of-code/tree/master/FlaskWeb)
+**Link to work:** [FlaskWeb](https://github.com/likui911/100-days-of-code/tree/master/FlaskWeb)
 
 ### Day 21: June 17, 2020 
 ##### Learn "flask_bootstrap"
@@ -175,7 +175,7 @@
 1. 使用session记录用户数据，避免刷新时重新提交的问题
 2. 使用flash和get_flashed_messages显示提示信息
 
-**Link to work:** [MDN](https://github.com/likui911/100-days-of-code/tree/master/FlaskWeb)
+**Link to work:** [FlaskWeb](https://github.com/likui911/100-days-of-code/tree/master/FlaskWeb)
 
 ### Day 22: June 25, 2020 
 ##### Learn vue.js
@@ -183,7 +183,7 @@
 1. 使用vue CLI构建vue项目
 2. vscode 安装相关插件
 
-**Link to work:** [MDN](https://github.com/likui911/100-days-of-code/tree/master/vue_crash_todolist)
+**Link to work:** [vue_crash_todolist](https://github.com/likui911/100-days-of-code/tree/master/vue_crash_todolist)
 
 ### Day 23: June 27, 2020 
 ##### Learn vue.js
@@ -191,8 +191,8 @@
 1. 完成vue-crash_todolist项目
 2. 不通过CLI手写Vue，熟悉Component和Event机制
 
-**Link to work:** [MDN](https://github.com/likui911/100-days-of-code/tree/master/vue_crash_todolist)
-**Link to work:** [MDN](https://github.com/likui911/100-days-of-code/tree/master/geektime-vue)
+**Link to work:** [vue_crash_todolist](https://github.com/likui911/100-days-of-code/tree/master/vue_crash_todolist)
+**Link to work:** [geektime-vue](https://github.com/likui911/100-days-of-code/tree/master/geektime-vue)
 
 ### Day 24: June 29, 2020 
 ##### Learn vue.js
@@ -200,7 +200,7 @@
 1. 使用Vue router构建导航栏
 2. 建立markdown标签页，准备实现第一个vue example
 
-**Link to work:** [MDN](https://github.com/likui911/100-days-of-code/tree/master/vue-examples)
+**Link to work:** [vue-examples](https://github.com/likui911/100-days-of-code/tree/master/vue-examples)
 
 ### Day 25: June 30, 2020 
 ##### Learn vue.js
@@ -209,14 +209,14 @@
 2. 将TodoMVC的css样式应用过来，这里用到了beforeCreate修改body属性
 3. 使用localStora存储数据
 
-**Link to work:** [MDN](https://github.com/likui911/100-days-of-code/tree/master/vue-examples)
+**Link to work:** [vue-examples](https://github.com/likui911/100-days-of-code/tree/master/vue-examples)
 
 ### Day 26: July 3, 2020 
 ##### Learn vue.js
 **Thoughts:** 
 1. 仿teambition标签控件
 
-**Link to work:** [MDN](https://github.com/likui911/100-days-of-code/tree/master/vue_drowdown_tags)
+**Link to work:** [vue_drowdown_tags](https://github.com/likui911/100-days-of-code/tree/master/vue_drowdown_tags)
 
 ### Day 27: July 5, 2020 
 ##### Learn vue.js
@@ -224,4 +224,4 @@
 1. 标签支持6种颜色
 2. 增加标签时支持选择颜色
 
-**Link to work:** [MDN](https://github.com/likui911/100-days-of-code/tree/master/vue_drowdown_tags)
+**Link to work:** [vue_drowdown_tags](https://github.com/likui911/100-days-of-code/tree/master/vue_drowdown_tags)
