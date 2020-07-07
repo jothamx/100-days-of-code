@@ -1,0 +1,164 @@
+.wrapper {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-width: 320px;
+    min-height: 240px;
+    margin: 10px auto;
+    overflow: hidden;
+    background-color: #ececec;
+    box-sizing: border-box;
+    user-select: none;
+    outline: 0;
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+.giftcard {
+    position: absolute;
+    width: 217px;
+    height: 163px;
+    top: 50.5%;
+    left: 50%;
+    margin-left: -39.5%;
+    margin-top: -27%;
+    perspective: 1000px;
+    font-family: 'Tahoma';
+    transform-style: preserve-3d;
+    border-radius: 5%/6.67%;
+    background-color: rgba(255, 255, 255, 1);
+    box-shadow: 0 0 5vw rgba(100, 100, 100, 0.5);
+    overflow: hidden;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+}
+
+.giftcard .banner {
+    height: 66%;
+    overflow: hidden;
+    position: relative;
+}
+
+.giftcard .info {
+    height: 34%;
+    position: relative;
+}
+
+.giftcard .brand {
+    position: absolute;
+    width: 88px;
+    height: 48px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    color: #fff;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.giftcard .brand-name {
+    width: 100%;
+    text-align: center;
+}
+
+.giftcard .list {
+    left: 5%;
+    position: absolute;
+    width: 40%;
+}
+
+.giftcard .info .title {
+    font-size: 20px;
+    color: rgb(230, 0, 150);
+    margin: 0;
+}
+
+.giftcard .price {
+    font-size: 16px;
+    color: #939393;
+    margin: 0;
+}
+
+.giftcard .info .expiration {
+    position: absolute;
+    bottom: 20%;
+    right: 5%;
+    width: 60%;
+    font-size: 10px;
+    color: #939393;
+    text-align: right;
+    margin: 0;
+}
+
+.giftcard .banner .brand-bg {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    transform-origin: 50% 100%;
+    background-color: rgb(230, 0, 150);
+    border-radius: 5% 5% 0 0/10% 10% 0 0;
+    background-image: radial-gradient(140% 160% at 110% 70%, rgba(140, 0, 155, 1), rgba(230, 0, 150, 0));
+}
+
+.giftcard .wave {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.giftcard .wave *, .giftcard .wave *::before, .giftcard .wave *::after {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    bottom: 0;
+}
+
+.giftcard .wave *::before, .giftcard .wave *::after {
+    content: '';
+}
+
+.giftcard .wave-fr {
+    width: 110%;
+    height: 75%;
+}
+
+.giftcard .wave-fr span::before, .giftcard .wave-fr span::after {
+    background-image: radial-gradient(90% 90% at 50% 10%, rgba(206, 33, 156, 0) 0%, rgba(206, 33, 156, 0) 70%, rgba(206, 33, 156, 0.6) 70%);
+}
+
+.giftcard .wave-fr span::before {
+    left: -100%;
+}
+
+.giftcard .wave-fr span::after {
+    left: 100%;
+}
+
+.giftcard .wave-fr::before, .giftcard .wave-fr::after {
+    background-image: radial-gradient(90% 90% at 50% 87%, rgba(206, 33, 156, 0.6) 0%, rgba(206, 33, 156, 0.6) 70%, rgba(206, 33, 156, 0) 70%);
+}
+
+.giftcard .wave-fr::after {
+    left: 200%;
+}
+
+.giftcard .wave-fr {
+    transform: translateX(-145%);
+    animation: wave-move-right 18s linear infinite;
+}
+
+@keyframes wave-move-right {
+    0% {
+        transform: translateX(-145%);
+    }
+    100% {
+        transform: translateX(55%);
+    }
+}
