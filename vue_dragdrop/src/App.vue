@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <DragDrop/>
+    <DragDrop style=" width: 330px;min-height: 400px;margin: auto;border:solid 1px red"/>
   </div>
 </template>
 
