@@ -27,12 +27,18 @@
         </li>
       </ul>
     </div>
-    <input style="display: none;" type="file" ref="fileInput" @change="onFileChanged" />
+    <input
+      style="display: none;"
+      multiple="true"
+      type="file"
+      ref="fileInput"
+      accept="image/png, image/jpeg"
+      @change="onFileChanged"
+    />
   </div>
 </template>
 
 <script>
-
 function swap(arr, i, j) {
   let temp = arr[i];
   arr[i] = arr[j];
@@ -68,12 +74,14 @@ export default {
       event.preventDefault();
     },
     onFileChanged: function(event) {
-      let file = event.target.files[0];
-      let url = URL.createObjectURL(file);
-      if (url) {
-        this.currentUrl = url;
-        this.urls.push(url);
-        this.OnUpdate();
+      let fileList = event.target.files;
+      for (let f of fileList) {
+        let url = URL.createObjectURL(f);
+        if (url) {
+          this.currentUrl = url;
+          this.urls.push(url);
+          this.OnUpdate();
+        }
       }
     },
     delImg(index) {
