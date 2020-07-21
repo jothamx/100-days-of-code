@@ -1,44 +1,26 @@
 <template>
   <div id="app">
-    <div class="tags">
-      <ul class="tags-list">
-        <li class="tags-list-item" v-for="(item,index) of allSelectTags" :key="index">
-          <button @click="removeGoodsTag(item.tag,item.catalog)">{{item.tag}}</button>
-        </li>
-      </ul>
-    </div>
-    <div class="catalog">
-      <li class="list-item" style="text-align:left;margin-bottom:10px;">
-        <input
-          type="text"
-          name="catalog"
-          placeholder="增加标签分类"
-          v-model="input"
-          @keyup.enter="addCatalog"
-        />
-        <button @click="addCatalog">增加分类</button>
-      </li>
-
-      <div class="catalog-items">
-        <div class="catalog-item" v-for="(item,index) of category" :key="index">
-          <dropdownTags
-            class="droptag"
-            :selTagList="goodsTags[item]"
-            :tagList="userTags[item]"
-            :catalog="item"
-            :show="false"
-            @addTag="addTag"
-            @removeTag="removeTag"
-            @removeGoodsTag="removeGoodsTag"
-            @selectTag="selectGoodsTag"
-          >
-            <template v-slot:button>
-              <button>{{item}}</button>
-            </template>
-          </dropdownTags>
+    <section class="thin-scroll">
+      <section class="tags-panel-list">
+        <div class="tags-unit" v-for="(item,index) of category" :key="index">
+          <div class="tags-unit-name">
+            <span>{{item}}</span>
+          </div>
+          <div class="tags-unit-body">
+            <dropdownTags
+              class="droptag"
+              :selTagList="goodsTags[item]"
+              :tagList="userTags[item]"
+              :catalog="item"
+              @addTag="addTag"
+              @removeTag="removeTag"
+              @removeGoodsTag="removeGoodsTag"
+              @selectTag="selectGoodsTag"
+            ></dropdownTags>
+          </div>
         </div>
-      </div>
-    </div>
+      </section>
+    </section>
   </div>
 </template>
 
@@ -135,6 +117,35 @@ export default {
   display: flex;
   width: 80%;
 }
+
+.thin-scroll {
+  max-height: 488px;
+  overflow-y: auto;
+}
+
+.tags-panel-list {
+  padding: 0 16px 8px;
+}
+.tags-unit {
+  display: flex;
+  margin-top: 0;
+}
+
+.tags-unit-name {
+  margin-right: 20px;
+  margin-bottom: 0;
+  flex: none;
+  width: 82px;
+  position: relative;
+  line-height: 38px;
+  cursor: default;
+}
+
+.tags-unit-body {
+  display: flex;
+  justify-content: space-between;
+}
+
 
 .tags {
   background-color: #d8e7f7;

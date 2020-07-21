@@ -1,10 +1,15 @@
 <template>
   <div class="container">
     <ul class="tag-picker-list">
-        <li class="tag-item tag-level-1" v-show="show" :key="index" v-for="(tag, index) in selTagList">
-          <span >{{ tag }}</span>
-          <i class="tag-remove el-icon-error" @click="handleClose(tag)"></i>
-        </li>
+      <li
+        class="tag-item tag-level-1"
+        v-show="show"
+        :key="index"
+        v-for="(tag, index) in selTagList"
+      >
+        <span>{{ tag }}</span>
+        <i class="tag-remove el-icon-error" @click="handleClose(tag)"></i>
+      </li>
 
       <li>
         <el-popover placement="bottom-start" width="250" trigger="click" :disabled="!display">
@@ -222,15 +227,19 @@ export default {
       border: none;
       border-radius: 28px;
       padding: 0 12px;
+      position: relative;
 
       &:hover {
         .tag-remove {
+          position: absolute;
+          top: 0px;
+          right: 0px;
           display: inline;
         }
       }
 
       .tag-remove {
-        margin-left: 3px;
+        position: absolute;
         display: none;
       }
     }
