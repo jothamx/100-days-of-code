@@ -1,10 +1,15 @@
 <template>
   <div class="container">
     <ul class="tag-picker-list">
-        <li class="tag-item tag-level-1" v-show="show" :key="index" v-for="(tag, index) in selTagList">
-          <span >{{ tag }}</span>
-          <i class="tag-remove el-icon-error" @click="handleClose(tag)"></i>
-        </li>
+      <li
+        class="tag-item tag-level-1"
+        v-show="show"
+        :key="index"
+        v-for="(tag, index) in selTagList"
+      >
+        <span>{{ tag }}</span>
+        <i class="tag-remove el-icon-error" v-show="!disabled" @click="handleClose(tag)"></i>
+      </li>
 
       <li>
         <el-popover placement="bottom-start" width="250" trigger="click" :disabled="!display">
@@ -82,9 +87,15 @@
           </div>
           <div class="tag-item tag-item-add" slot="reference">
             <slot name="button">
-              <button v-if="tagsEmpty" class="button-new-tag" @click="display = true">添加标签</button>
+              <button
+                v-if="tagsEmpty"
+                :disabled="disabled"
+                class="button-new-tag"
+                @click="display = true"
+              >添加标签</button>
               <button
                 v-else
+                :disabled="disabled"
                 class="button-new-tag plus-icon el-icon-circle-plus"
                 @click="display = true"
               />
@@ -109,6 +120,10 @@ export default {
     show: {
       type: Boolean,
       default: true
+    },
+    disabled: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -222,15 +237,19 @@ export default {
       border: none;
       border-radius: 28px;
       padding: 0 12px;
+      position: relative;
 
       &:hover {
         .tag-remove {
+          position: absolute;
+          top: 0px;
+          right: 0px;
           display: inline;
         }
       }
 
       .tag-remove {
-        margin-left: 3px;
+        position: absolute;
         display: none;
       }
     }
@@ -308,7 +327,11 @@ export default {
     color: #bfbfbf;
     padding: 0;
     font-size: inherit;
-
+    &:disabled {
+      &:hover {
+        color: #bfbfbf;
+      }
+    }
     &:hover {
       color: #1b9aee;
     }
