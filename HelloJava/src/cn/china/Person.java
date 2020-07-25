@@ -1,6 +1,11 @@
 package cn.china;
 
-public class Person {
+import org.jetbrains.annotations.NotNull;
+
+public class Person implements Comparable<Person> {
+    private String name;
+    private int birth;
+
     public Person(String name, int birth) {
         this.name = name;
         this.birth = birth;
@@ -14,12 +19,17 @@ public class Person {
         return name;
     }
 
-
     public int getBirth() {
         return birth;
     }
 
+    @Override
+    public int compareTo(@NotNull Person other) {
+        return this.name.compareTo(other.name);
+    }
 
-    private String name;
-    private int birth;
+    @Override
+    public String toString() {
+        return "name='" + name + '\'' + ", birth=" + birth;
+    }
 }
