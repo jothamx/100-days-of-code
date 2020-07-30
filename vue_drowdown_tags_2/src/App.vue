@@ -12,7 +12,7 @@
               :selTagList="goodsTags[item]"
               :tagList="userTags[item]"
               :catalog="item"
-              :disabled="true"
+              :disabled="false"
               @addTag="addTag"
               @removeTag="removeTag"
               @removeGoodsTag="removeGoodsTag"

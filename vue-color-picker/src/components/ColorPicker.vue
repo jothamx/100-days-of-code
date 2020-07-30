@@ -29,6 +29,7 @@ export default {
   computed: {
     catalog: function () {
       let data = new Set();
+      data.add("所有");
       this.colorList.forEach((element) => {
         data.add(element.catalog);
       });
@@ -37,6 +38,10 @@ export default {
   },
   methods: {
     getColors: function (catalog) {
+      if(catalog==="所有")
+      {
+        return this.colorList;
+      }
       return this.colorList.filter((item) => {
         return item.catalog == catalog;
       });
@@ -67,7 +72,7 @@ export default {
   height: 280px;
   overflow: auto;
   display: flex;
-  align-content: start;
+  align-content: flex-start;
   flex-wrap: wrap;
 }
 .content::-webkit-scrollbar-thumb {
