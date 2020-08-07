@@ -1,17 +1,45 @@
 <template>
   <div id="app">
-    
-    <el-tag class="tag" v-for="(item,index) of colorTags" :key="index">{{item}}</el-tag>
-    
-    <el-popover placement="right-start" style="min-height:500px;">
-      <color-picker :colorList="color" @change="onChange"></color-picker>
-      <el-button slot="reference">选择颜色</el-button>
-    </el-popover>
+    <div class="container">
+      <div
+        class="tag"
+        :style="{'background-color':item.value}"
+        v-for="(item,index) of colorTags"
+        :key="index"
+      >
+        <span
+          class="tag-label"
+          :style="{color:isDark(item.value,150)?'#ffffff':'#1f2d3d'}"
+        >{{item.name}}</span>
+        <i class="tag-remove el-icon-error" :style="{color:isDark(item.value,150)?'#ffffff':'#1f2d3d'}" @click="handleClose(item)"></i>
+      </div>
+      <el-popover placement="right-start" style="min-height:500px;">
+        <color-picker :colorList="color" @change="onChange"></color-picker>
+        <el-button class="btn" size="mini" icon="el-icon-circle-plus-outline" slot="reference"></el-button>
+      </el-popover>
+    </div>
   </div>
 </template>
 
 <script>
 import ColorPicker from "./components/ColorPicker.vue";
+
+function hexToRgb(hex) {
+  // Expand shorthand form (e.g. "03F") to full form (e.g. "0033FF")
+  var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+  hex = hex.replace(shorthandRegex, function (m, r, g, b) {
+    return r + r + g + g + b + b;
+  });
+
+  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  return result
+    ? {
+        r: parseInt(result[1], 16),
+        g: parseInt(result[2], 16),
+        b: parseInt(result[3], 16),
+      }
+    : null;
+}
 
 export default {
   name: "App",
@@ -38,25 +66,37 @@ export default {
         { name: "橄榄色", value: "#808000", catalog: "黄绿" },
         { name: "森林绿", value: "#228B22", catalog: "黄绿" },
         { name: "黄绿", value: "#9ACD32", catalog: "黄绿" },
+
+        { name: "DarkKhaki", value: "#BDB76B", catalog: "w3" },
+        { name: "RosyBrown", value: "#BC8F8F", catalog: "w3" },
       ],
       colorTags: [],
     };
   },
   methods: {
-    onChange: function (element) {
-      if (this.colorTags.indexOf(element.name)!=-1) {
-        console.log(`delete ${element.name}`);
-       this.colorTags.splice(this.colorTags.indexOf(element.name),1);
+    onChange(element) {
+      if (this.colorTags.indexOf(element) != -1) {
+        console.log(`delete ${element}`);
+        this.colorTags.splice(this.colorTags.indexOf(element), 1);
       } else {
-         this.colorTags.push(element.name);
-        console.log(`add ${element.name}`);
+        this.colorTags.push(element);
+        console.log(`add ${element}`);
       }
     },
+    isDark(hex_color, n) {
+      let rgb = hexToRgb(hex_color);
+      var m = n || 128;
+      return (rgb.r * 299 + rgb.g * 587 + rgb.b * 114) / 1000 < m;
+    },
+    handleClose(item)
+    {
+      this.colorTags.splice(this.colorTags.indexOf(item), 1);
+    }
   },
 };
 </script>
 
-<style>
+<style scoped>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -68,7 +108,43 @@ export default {
   margin-left: 100px;
   display: flex;
 }
-.tag{
+.container {
+  width: 50%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tag {
   margin-right: 20px;
+  margin-bottom: 20px;
+  padding-left: auto;
+  padding-right: auto;
+  height: 35px;
+  width: 80px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.tag:hover .tag-remove {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  display: inline;
+}
+
+.tag-remove {
+  position: absolute;
+  display: none;
+}
+
+.tag-label {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn {
+  font-size: 18px;
+  width: 80px;
 }
 </style>
