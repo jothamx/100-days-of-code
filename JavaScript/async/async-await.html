@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <script>
+        async function f() {
+            return 1;
+        }
+        // async ：即这个函数总是返回一个 promise
+        // async function f() {
+        //     return Promise.resolve(1);
+        // }
+        f().then(alert)
+
+        async function f1() {
+            let promise = new Promise((resolve, reject) => {
+                setTimeout(() => resolve("done!"), 1000)
+            });
+            // await 只在 async 函数 中有效
+            let result = await promise; // 等待，直到 promise resolve (*)
+            alert(result); // "done!"
+        }
+        f1();
+
+        // 使用await简化promise链
+        async function showAvatar() {
+            // 读取我们的 JSON
+            let response = await fetch('https://zh.javascript.info/article/promise-chaining/user.json');
+            let user = await response.json();
+            // 读取 github 用户信息
+            let githubResponse = await fetch(`https://api.github.com/users/${user.name}`);
+            let githubUser = await githubResponse.json();
+            // 显示头像
+            let img = document.createElement('img');
+            img.src = githubUser.avatar_url;
+            img.className = "promise-avatar-example";
+            document.body.append(img);
+            // 等待 3 秒
+            await new Promise((resolve, reject) => setTimeout(resolve, 3000));
+            img.remove();
+            return githubUser;
+        }
+        showAvatar();
+
+        // 使用try/catch捕获rejection
+        async function f2() {
+            try {
+                let response = await fetch('/no-user-here');
+                let user = await response.json();
+            } catch (err) {
+                // 捕获到 fetch 和 response.json 中的错误
+                alert(err);
+            }
+        }
+        f2();
+
+        // 等待结果数组
+        let results = await Promise.all([
+            fetch('url1'),
+            fetch('url2'),
+            //...
+        ]);
+        /*
+        function loadJson(url) {
+            return fetch(url)
+                .then(response => {
+                    if (response.status == 200) {
+                        return response.json();
+                    } else {
+                        throw new Error(response.status);
+                    }
+                })
+        }
+
+        loadJson('no-such-user.json')
+            .catch(alert); // Error: 404
+        */
+       
+        async function loadJson(url) { // (1)
+            let response = await fetch(url); // (2)
+
+            if (response.status == 200) {
+                let json = await response.json(); // (3)
+                return json;
+            }
+
+            throw new Error(response.status);
+        }
+
+        loadJson('no-such-user.json')
+            .catch(alert); // Error: 404 (4)
+    </script>
+</body>
+
+</html>
