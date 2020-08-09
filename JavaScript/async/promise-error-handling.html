@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <script>
+        // 执行流：catch -> then
+        new Promise((resolve, reject) => {
+            throw new Error("Whoops!");
+        }).catch(function (error) {
+            alert("The error is handled, continue normally");
+        }).then(() => alert("Next successful handler runs"));
+
+        // 执行流：catch -> catch
+        new Promise((resolve, reject) => {
+            throw new Error("Whoops!");
+        }).catch(function (error) { // (*)
+            if (error instanceof URIError) {
+                // 处理它
+            } else {
+                alert("Can't handle such error");
+                throw error; // 再次抛出此 error 或另外一个 error，执行将跳转至下一个 catch
+            }
+        }).then(function () {
+            /* 不在这里运行 */
+        }).catch(error => { // (**)
+            alert(`The unknown error has occurred: ${error}`);
+        });
+
+        // setTimeout中的错误
+        // 函数代码周围有个“隐式的 try..catch”。所以，所有同步错误都会得到处理。
+        // 但是这里的错误并不是在 executor 运行时生成的，而是在稍后生成的。因此，promise 无法处理它。
+        new Promise(function (resolve, reject) {
+            setTimeout(() => {
+                throw new Error("Whoops!");
+            }, 1000);
+        }).catch(alert);
+    </script>
+</body>
+
+</html>
