@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // Number使用..来调用方法
+        alert(12345..toString(10));//alert((12345).toString(16));
+
+        // IEEE-754 无法精确表示0.1、0.2之类的小数
+        let sum = 0.1 + 0.2;
+        alert(sum.toFixed(2)); // 0.30
+
+        // Hello！我是一个会自我增加的数字！
+        alert(9999999999999999); // 显示 10000000000000000
+
+        //parseInt和parseFloat可以将字符串转换成数字
+        //它们可以从字符串中“读取”数字，直到无法读取为止。如果发生 error，则返回收集到的数字。
+        alert(parseInt('100px')); // 100
+        alert(parseFloat('12.5em')); // 12.5
+
+        alert(parseInt('12.3')); // 12，只有整数部分被返回了
+        alert(parseFloat('12.3.4')); // 12.3，在第二个点出停止了读取
+
+        alert("Widget with id".includes("Widget")); // true
+        alert("Hello".includes("Bye")); // false
+
+        alert("Widget".startsWith("Wid")); // true，"Widget" 以 "Wid" 开始
+        alert("Widget".endsWith("get")); // true，"Widget" 以 "get" 结束
+
+        let str = "stringify";
+        //str.slice(start [, end]) 从 start 到 end（不含 end）
+        alert(str.slice(5, 8));
+        //str.substring(start [, end]) start 与 end 之间（包括 start，但不包括 end）负值代表0
+        alert(str.substring(5, 8));
+        //str.substr(start [, length]) 从 start 开始获取长为 length 的字符串
+        alert(str.substr(5, 3));
+    </script>
+</body>
+
+</html>
