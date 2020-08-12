@@ -1,6 +1,5 @@
 <template>
 	<view>
-		<page-head title="scroll-view,区域滚动视图"></page-head>
 		<view class="uni-padding-wrap uni-common-mt">
 			<view class="uni-title uni-common-mt">
 				Vertical Scroll
@@ -73,19 +72,16 @@
 	.scroll-Y {
 		height: 300rpx;
 	}
-
 	.scroll-view_H {
 		white-space: nowrap;
 		width: 100%;
 	}
-
 	.scroll-view-item {
 		height: 300rpx;
 		line-height: 300rpx;
 		text-align: center;
 		font-size: 36rpx;
 	}
-
 	.scroll-view-item_H {
 		display: inline-block;
 		width: 100%;
