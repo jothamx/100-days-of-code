@@ -1,66 +1,35 @@
 <template>
 	<view>
-		<HMfilterDropdown :menuTop="0" :filterData="filterData" :defaultSelected ="defaultSelected"  :updateMenuName="true" @confirm="confirm" dataFormat="Object"></HMfilterDropdown>
+		<filterDropdown :menuTop="0" :filterData="filterData" :updateMenuName="true" @confirm="confirm" dataFormat="Object"></filterDropdown>
 		<!-- 占位 -->
 		<view class="place"></view>
 	</view>
 </template>
 
 <script>
-	import HMfilterDropdown from '@/components/HM-filterDropdown/HM-filterDropdown.vue';
+	import filterDropdown from '@/components/filter-dropdown/filter-dropdown.vue';
 	import data from '@/common/data.js';
 	export default {
 		components: {
-			'HMfilterDropdown':HMfilterDropdown
+			filterDropdown
 		},
 		data() {
 			return {
 				indexArr:'',
 				valueArr:'',
-				defaultSelected:[],
 				filterData:[]
 			};
 		}, 
 		onLoad: function () {
-			
 			setTimeout(()=>{
 				this.filterData = data; 
-				//设置选中项
-				// 一下的注释是针对测试数据说明结构的意思，具体传入什么数据，要看你自己数据。如果data.js数据有修改，注意defaultSelected也要修改
-				//传入defaultSelected的结构不能错，错了就报错运行异常。 不想选中的请传入null
-				// this.defaultSelected = [
-				// 	[1,1,0],				//第0个菜单选中 一级菜单的第1项，二级菜单的第1项，三级菜单的第3项
-				// 	[null,null],			//第1个菜单选中 都不选中
-				// 	[1],					//第2个菜单选中 一级菜单的第1项
-				// 	[[0],[1,2,7],[1,0]],	//筛选菜单选中 第一个筛选的第0项，第二个筛选的第1,2,7项，第三个筛选的第1,0项
-				// 	[[0],[1],[1]]			//单选菜单选中 第一个筛选的第0项，第二个筛选的第1项，第三个筛选的第1项
-				// ];
 			},100);
-
-			//模拟ajax请求子菜单数据。
-			setTimeout(()=>{
-				this.filterData[1].submenu[0].submenu = [{"name": "附近","value": "附近"},{"name": "1km","value": "1km"},{"name": "2km","value": "2km"},{"name": "3km","value": "3km"},{"name": "4km","value": "4km"},{"name": "5km","value": "5km"}];
-			},1000)
 		},
 		methods:{
-			//接收菜单结果
 			confirm(e){
 				this.indexArr = e.index;
 				this.valueArr = e.value;
-				
-			},
-			//修改选中项-示例
-			changeSelected(){
-				this.defaultSelected = [];
-				this.$nextTick(()=>{
-					this.defaultSelected = [
-						[1,1,0],				//第0个菜单选中 一级菜单的第1项，二级菜单的第1项，三级菜单的第3项
-						[null,null],			//第1个菜单选中 都不选中
-						[1],					//第2个菜单选中 一级菜单的第1项
-						[[0],[1,2,7],[1,0]],	//筛选菜单选中 第一个筛选的第0项，第二个筛选的第1,2,7项，第三个筛选的第1,0项
-						[[0],[1],[1]]			//单选菜单选中 第一个筛选的第0项，第二个筛选的第1项，第三个筛选的第1项
-					];
-				})
+				console.log(this.indexArr,this.valueArr);
 			},
 		}
 	}
