@@ -84,11 +84,11 @@
 			},
 			filterData: {
 				value: Array,
-				default: [],
+				default: () => { return [] }
 			},
 			defaultSelected: {
 				value: Array,
-				default: [],
+				default: () => { return [] }
 			},
 			updateMenuName: {
 				value: Boolean,
@@ -98,10 +98,6 @@
 				value: String,
 				default: "Array",
 			},
-			defaultSelected:{
-				value: Array,
-				default: []
-			}
 		},
 		watch: {
 			filterData: {
