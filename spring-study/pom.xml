@@ -11,6 +11,8 @@
     <modules>
         <module>spring-01-ioc</module>
         <module>spring-02-hellospring</module>
+        <module>spring-demo</module>
+        <module>uploading-files</module>
     </modules>
 
     <dependencies>
