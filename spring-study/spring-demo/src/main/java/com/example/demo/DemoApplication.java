@@ -6,6 +6,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+/*
+  @SpringBootApplication相当于以下3个注解
+  1. @Configuration
+  2. @EnableAutoConfiguration
+  3. @ComponentScan
+*/
+
 @SpringBootApplication
 @RestController
 public class DemoApplication {
