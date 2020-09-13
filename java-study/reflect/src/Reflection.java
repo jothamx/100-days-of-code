@@ -60,9 +60,6 @@ public class Reflection {
         for (Class i : is) {
             System.out.println(i);
         }
-
-
-
     }
 
     static void printClassInfo(Class cls) {
