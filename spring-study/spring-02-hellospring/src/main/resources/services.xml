@@ -4,8 +4,20 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <beans>
+        <import resource="dao.xml"/>
+
         <bean id="hello" class="com.spring.pojo.Hello">
             <property name="name" value="Spring"></property>
         </bean>
+
+        <bean id="petStore" class="com.spring.services.PetStoreServiceImpl">
+            <property name="accountDao" ref="accountDao"/>
+            <property name="itemDao" ref="itemDao"/>
+        </bean>
+
+        <!-- the bean to be created via the factory bean -->
+        <bean id="clientService"
+              class="com.spring.services.ClientService"
+              factory-method="createInstance"/>
     </beans>
 </beans>
