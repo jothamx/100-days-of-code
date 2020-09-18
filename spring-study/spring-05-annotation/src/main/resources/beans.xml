@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.springframework.org/schema/context
+            https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:annotation-config/>
+
+    <bean id="cat" class="com.examples.pojo.Cat"></bean>
+
+    <!-- id or nested qualifier element, leading to the same matching result-->
+    <bean class="com.examples.pojo.Dog">
+        <qualifier value="dog1"></qualifier>
+    </bean>
+
+    <bean id="dog2" class="com.examples.pojo.Dog"></bean>
+
+    <bean id="person" class="com.examples.pojo.Person"></bean>
+
+    <bean id="recommender" class="com.examples.annotation.MovieRecommender"></bean>
+
+    <bean class="com.examples.annotation.MovieCatalog">
+        <qualifier type="com.examples.annotation.MovieQualifier">
+            <attribute key="format" value="VHS"/>
+            <attribute key="genre" value="Action"/>
+        </qualifier>
+        <!-- inject any dependencies required by this bean -->
+    </bean>
+
+    <bean class="com.examples.annotation.MovieCatalog">
+        <qualifier type="com.examples.annotation.MovieQualifier">
+            <attribute key="format" value="VHS"/>
+            <attribute key="genre" value="Comedy"/>
+        </qualifier>
+        <!-- inject any dependencies required by this bean -->
+    </bean>
+
+    <bean class="com.examples.annotation.MovieCatalog">
+        <meta key="format" value="DVD"/>
+        <meta key="genre" value="Action"/>
+        <!-- inject any dependencies required by this bean -->
+    </bean>
+
+    <bean class="com.examples.annotation.MovieCatalog">
+        <meta key="format" value="BLURAY"/>
+        <meta key="genre" value="Comedy"/>
+        <!-- inject any dependencies required by this bean -->
+    </bean>
+</beans>
