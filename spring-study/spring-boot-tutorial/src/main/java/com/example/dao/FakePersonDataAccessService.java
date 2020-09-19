@@ -6,16 +6,16 @@ import org.springframework.stereotype.Repository;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 @Repository("fakeDao")
 public class FakePersonDataAccessService implements PersonDao {
 
+    private static int max = 0;
     private static final List<Person> DB = new ArrayList<>();
 
     @Override
-    public int insertPerson(UUID id, Person person) {
-        DB.add(new Person(id, person.getName()));
+    public int insertPerson(Person person) {
+        DB.add(new Person(max++, person.getName()));
         return 1;
     }
 
@@ -25,14 +25,14 @@ public class FakePersonDataAccessService implements PersonDao {
     }
 
     @Override
-    public Optional<Person> selectPersonById(UUID id) {
+    public Optional<Person> selectPersonById(int id) {
         return DB.stream()
-                .filter(person -> person.getId().equals(id))
+                .filter(person -> person.getId() == id)
                 .findFirst();
     }
 
     @Override
-    public int deletePersonById(UUID id) {
+    public int deletePersonById(int id) {
         Optional<Person> personMaybe = selectPersonById(id);
         if (!personMaybe.isPresent()) {
             return 0;
@@ -42,12 +42,12 @@ public class FakePersonDataAccessService implements PersonDao {
     }
 
     @Override
-    public int updatePersonById(UUID id, Person update) {
+    public int updatePersonById(int id, Person update) {
         return selectPersonById(id)
                 .map(person -> {
-                    int indexofPersonToUpdate = DB.indexOf(person);
-                    if (indexofPersonToUpdate >= 0) {
-                        DB.set(indexofPersonToUpdate, new Person(id, update.getName()));
+                    int indexOfPersonToUpdate = DB.indexOf(person);
+                    if (indexOfPersonToUpdate >= 0) {
+                        DB.set(indexOfPersonToUpdate, new Person(id, update.getName()));
                         return 1;
                     }
                     return 0;
