@@ -25,6 +25,11 @@ public class FakePersonDataAccessService implements PersonDao {
     }
 
     @Override
+    public List<Person> selectPersonByName(String name) {
+        return null;
+    }
+
+    @Override
     public Optional<Person> selectPersonById(int id) {
         return DB.stream()
                 .filter(person -> person.getId() == id)

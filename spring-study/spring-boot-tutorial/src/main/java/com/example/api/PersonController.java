@@ -30,6 +30,11 @@ public class PersonController {
         return personService.getAllPeople();
     }
 
+    @GetMapping(params = "name")
+    public List<Person> getPersonByName(@RequestParam("name") String name) {
+        return personService.getPersonByName(name);
+    }
+
     @GetMapping(path = "{id}")
     public Person getPersonById(@PathVariable("id") int id) {
         return personService.getPersonById(id)

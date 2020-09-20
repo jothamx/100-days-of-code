@@ -36,6 +36,17 @@ public class PersonDataAccessService implements PersonDao {
     }
 
     @Override
+    public List<Person> selectPersonByName(String key) {
+        final String sql = "SELECT id,name FROM person WHERE name LIKE ?";
+
+        return jdbcTemplate.query(sql, new Object[]{"%" + key + "%"}, (resultSet, i) -> {
+            int id = resultSet.getInt("id");
+            String name = resultSet.getString("name");
+            return new Person(id, name);
+        });
+    }
+
+    @Override
     public Optional<Person> selectPersonById(int id) {
         final String sql = "SELECT name FROM person WHERE id = ?";
         Person person = jdbcTemplate.queryForObject(

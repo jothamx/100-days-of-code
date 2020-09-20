@@ -9,6 +9,8 @@ public interface PersonDao {
 
     List<Person> selectAllPeople();
 
+    List<Person> selectPersonByName(String name);
+
     Optional<Person> selectPersonById(int id);
 
     int insertPerson(Person person);

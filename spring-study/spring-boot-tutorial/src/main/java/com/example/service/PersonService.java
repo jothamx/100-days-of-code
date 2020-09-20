@@ -27,6 +27,10 @@ public class PersonService {
         return personDao.selectAllPeople();
     }
 
+    public List<Person> getPersonByName(String name) {
+        return personDao.selectPersonByName(name);
+    }
+
     public Optional<Person> getPersonById(int id) {
         return personDao.selectPersonById(id);
     }
