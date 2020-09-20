@@ -17,6 +17,8 @@
         <module>spring-04-scopes</module>
         <module>spring-05-Annotation</module>
         <module>spring-boot-tutorial</module>
+        <module>spring-06-configuration</module>
+
     </modules>
 
     <dependencies>
