@@ -1,5 +1,5 @@
 <template>
-  <div>Register</div>
+  <div>BasicForm</div>
 </template>
 
 <script>

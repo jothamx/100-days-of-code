@@ -1,15 +1,9 @@
 <template>
-  <div>登录页</div>
+  <div>Login</div>
 </template>
 
 <script>
-export default {
-  data() {
-    return {
-      title: '111',
-    }
-  },
-}
+export default {}
 </script>
 
 <style></style>

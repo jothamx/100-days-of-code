@@ -1,5 +1,8 @@
 <template>
-  <div>Register</div>
+  <div>
+    <div>SetpForm</div>
+    <router-view></router-view>
+  </div>
 </template>
 
 <script>

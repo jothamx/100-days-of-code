@@ -1,5 +1,8 @@
 <template>
-  <div>Register</div>
+  <div>
+    <div>UserLayout</div>
+    <router-view></router-view>
+  </div>
 </template>
 
 <script>
