@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise Chains</title>
+</head>
+
+<body>
+    <script>
+        function doSomething1(data) {
+            return new Promise((resolve, reject) => {
+                console.log("doSomething 1", data);
+                resolve(data * 2);
+            });
+        }
+        function doSomething2(data) {
+            return new Promise((resolve, reject) => {
+                console.log("doSomething 2", data);
+                //resolve(data * 2);
+                reject("doSomething 2 wrong");
+            });
+        }
+        function doSomething3(data) {
+            return new Promise((resolve, reject) => {
+                console.log("doSomething 3", data);
+                resolve(data * 2);
+            });
+        }
+
+        doSomething1(1)
+            .then(data => doSomething2(data))
+            .then(data => doSomething3(data))
+            .catch(err => {
+                console.log("something wrong", err);
+            })
+
+    </script>
+</body>
+
+</html>
