@@ -18,18 +18,18 @@ const routes: Array<RouteRecordRaw> = [
     {
         path: '/lodash',
         name: 'Lodash',
-        // route level code-splitting
-        // this generates a separate chunk (about.[hash].js) for this route
-        // which is lazy-loaded when the route is visited.
         component: () => import(/* webpackChunkName: "lodash" */ '../views/Lodash.vue')
     },
     {
         path: '/watcher',
         name: 'Watcher',
-        // route level code-splitting
-        // this generates a separate chunk (about.[hash].js) for this route
-        // which is lazy-loaded when the route is visited.
         component: () => import(/* webpackChunkName: "watcher" */ '../views/Watcher.vue')
+    },
+    {
+        path: '/binding',
+        name: 'ClassStyleBindings',
+        component: () => import(/* webpackChunkName: "binding" */'../views/ClassStyleBindings.vue')
+
     }
 ]
 
