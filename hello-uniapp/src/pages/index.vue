@@ -1,93 +1,106 @@
 <template>
-	<view>
-		<view class="uni-padding-wrap uni-common-mt">
-			<view class="uni-title uni-common-mt">
-				Vertical Scroll
-				<text>\n纵向滚动</text>
-			</view>
-			<view>
-				<scroll-view :scroll-top="scrollTop" scroll-y="true" class="scroll-Y" @scrolltoupper="upper" @scrolltolower="lower"
-				@scroll="scroll">
-					<view id="demo1" class="scroll-view-item uni-bg-red">A</view>
-					<view id="demo2" class="scroll-view-item uni-bg-green">B</view>
-					<view id="demo3" class="scroll-view-item uni-bg-blue">C</view>
-				</scroll-view>
-			</view>
-			<view @tap="goTop" class="uni-link uni-center uni-common-mt">
-				点击这里返回顶部
-			</view>
-			
-			<view class="uni-title uni-common-mt">
-				Horizontal Scroll
-				<text>\n横向滚动</text>
-			</view>
-			<view>
-				<scroll-view class="scroll-view_H" scroll-x="true" @scroll="scroll" scroll-left="120">
-					<view id="demo1" class="scroll-view-item_H uni-bg-red">A</view>
-					<view id="demo2" class="scroll-view-item_H uni-bg-green">B</view>
-					<view id="demo3" class="scroll-view-item_H uni-bg-blue">C</view>
-				</scroll-view>
-			</view>
+    <view>
+        <view class="uni-padding-wrap uni-common-mt">
+            <view class="uni-title uni-common-mt">
+                Vertical Scroll
+                <text>\n纵向滚动</text>
+            </view>
+            <view>
+                <scroll-view
+                    :scroll-into-view="scrollId"
+                    scroll-y="true"
+                    class="scroll-Y"
+                >
+                    <view
+                        v-for="(item, index) in list"
+                        :key="index"
+                        :id="'id' + index"
+                        class="scroll-view-item"
+                        :class="index % 2 == 0 ? 'uni-bg-red' : 'uni-bg-green'"
+                    >
+                        {{ item }}
+                    </view>
+                </scroll-view>
+            </view>
+            <view @tap="grow" class="uni-link uni-center uni-common-mt">
+                增加
+            </view>
             <view class="uni-common-pb"></view>
-		</view>
-	</view>
+        </view>
+    </view>
 </template>
 <script>
-	export default {
-		data() {
-			return {
-				scrollTop: 0,
-				old: {
-					scrollTop: 0
-				}
-			}
-		},
-		methods: {
-			upper: function(e) {
-				console.log(e)
-			},
-			lower: function(e) {
-				console.log(e)
-			},
-			scroll: function(e) {
-				console.log(e)
-				this.old.scrollTop = e.detail.scrollTop
-			},
-			goTop: function(e) {
-				// 解决view层不同步的问题
-				this.scrollTop = this.old.scrollTop
-				this.$nextTick(function() {
-					this.scrollTop = 0
-				});
-				uni.showToast({
-					icon:"none",
-					title:"纵向滚动 scrollTop 值已被修改为 0"
-				})
-			}
-		}
-	}
+export default {
+    data() {
+        return {
+            scrollId: "id0",
+            list: [],
+        };
+    },
+    methods: {
+        scrollBottom: function (e) {
+            this.$nextTick(function () {
+                this.scrollId = "id" + (this.list.length - 1);
+            });
+        },
+        grow: function () {
+            let arr = [
+                "A",
+                "B",
+                "C",
+                "D",
+                "E",
+                "F",
+                "G",
+                "H",
+                "I",
+                "J",
+                "K",
+                "L",
+                "M",
+                "N",
+                "O",
+                "P",
+                "Q",
+                "R",
+                "S",
+                "T",
+                "U",
+                "V",
+                "W",
+                "X",
+                "Y",
+                "Z",
+            ];
+            let idx = Math.floor(Math.random() * 26);
+
+            this.list.push(arr[idx]);
+            this.scrollBottom();
+        },
+    },
+};
 </script>
 
 <style>
-	.scroll-Y {
-		height: 300rpx;
-	}
-	.scroll-view_H {
-		white-space: nowrap;
-		width: 100%;
-	}
-	.scroll-view-item {
-		height: 300rpx;
-		line-height: 300rpx;
-		text-align: center;
-		font-size: 36rpx;
-	}
-	.scroll-view-item_H {
-		display: inline-block;
-		width: 100%;
-		height: 300rpx;
-		line-height: 300rpx;
-		text-align: center;
-		font-size: 36rpx;
-	}
+.scroll-Y {
+    height: calc(100vh - 150rpx - env(safe-area-inset-bottom));
+}
+.scroll-view_H {
+    white-space: nowrap;
+    width: 100%;
+}
+.scroll-view-item {
+    height: 300rpx;
+    line-height: 300rpx;
+    text-align: center;
+    font-size: 36rpx;
+}
+.scroll-view-item_H {
+    display: inline-block;
+    width: 100%;
+    height: 300rpx;
+    line-height: 300rpx;
+    text-align: center;
+    font-size: 36rpx;
+}
 </style>
